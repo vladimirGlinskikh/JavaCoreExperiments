@@ -1,18 +1,11 @@
 package designPatterns.factory.model;
 
-public abstract class Computer {
-    public abstract String getRam();
+public interface Computer {
+    String getName();
 
-    public abstract String getSSD();
+    String getRam();
 
-    public abstract String getCPU();
+    String getSSD();
 
-    @Override
-    public String toString() {
-        return "RAM = " + this.getRam()
-                + ", SDD = "
-                + this.getSSD()
-                + ", CPU = "
-                + this.getCPU();
-    }
+    String getCPU();
 }

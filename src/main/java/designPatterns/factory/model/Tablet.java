@@ -1,12 +1,12 @@
 package designPatterns.factory.model;
 
-public class Laptop implements Computer {
+public class Tablet implements Computer {
     private String name;
     private String ram;
     private String ssd;
     private String cpu;
 
-    public Laptop(String name, String ram, String ssd, String cpu) {
+    public Tablet(String name, String ram, String ssd, String cpu) {
         this.name = name;
         this.ram = ram;
         this.ssd = ssd;
@@ -35,7 +35,7 @@ public class Laptop implements Computer {
 
     @Override
     public String toString() {
-        return "Laptop{" +
+        return "Tablet{" +
                 "name='" + name + '\'' +
                 ", ram='" + ram + '\'' +
                 ", ssd='" + ssd + '\'' +
