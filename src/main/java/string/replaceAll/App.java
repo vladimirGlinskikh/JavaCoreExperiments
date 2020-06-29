@@ -5,7 +5,7 @@ public class App {
         String string = "Welcome to JavaExperiments";
         System.out.println("Original String: " + string);
         System.out.println("--------");
-        String replace = string.replaceAll("to", "this is");
+        String replace = string.replaceAll(" ", "");
         System.out.println("New String: " + replace);
     }
 }
