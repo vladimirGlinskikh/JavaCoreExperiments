@@ -1,4 +1,4 @@
-package objects.members;
+package core.objects.members;
 
 public class C {
     public void mCPublic() {

@@ -1,4 +1,4 @@
-package inner.anonymousInner.nested;
+package core.inner.anonymousInner.nested;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -38,7 +38,7 @@ public class OuterClass {
         }
     }
 
-    //inner class, non-static and can access all the variables/methods of the outer class
+    //core.inner class, non-static and can access all the variables/methods of the outer class
     class InnerClass {
         private int w;
         protected int x;
@@ -71,7 +71,7 @@ public class OuterClass {
         }
     }
 
-    //local inner class inside the method
+    //local core.inner class inside the method
     public void print(String initial) {
         class Logger {
             String name;
@@ -93,10 +93,10 @@ public class OuterClass {
         logger.log("" + this.l);
     }
 
-    //anonymous inner class
+    //anonymous core.inner class
     public String[] getFilesInDir(String dir, final String ext) {
         File file = new File(dir);
-        //anonymous inner class implementing FilenameFilter interface
+        //anonymous core.inner class implementing FilenameFilter interface
         String[] filesList = file.list(new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {

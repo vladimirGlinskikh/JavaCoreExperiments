@@ -1,4 +1,4 @@
-package objects.members;
+package core.objects.members;
 
 public class Test {
     <T extends C & I> void test(T t) {
