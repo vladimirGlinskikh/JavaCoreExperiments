@@ -1,4 +1,4 @@
-package inner.localInner;
+package core.inner.localInner;
 
 public class Main {
     private String stringMain;

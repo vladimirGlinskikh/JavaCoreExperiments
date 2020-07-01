@@ -1,4 +1,4 @@
-package objects.creation;
+package core.objects.creation;
 
 public class Value {
     int value;

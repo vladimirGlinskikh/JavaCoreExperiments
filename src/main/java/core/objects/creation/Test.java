@@ -1,10 +1,10 @@
-package objects.creation;
+package core.objects.creation;
 
 public class Test {
     public static void main(String[] args) {
         Point point = null;
         try {
-            point = (Point) Class.forName("objects.creation.Point").newInstance();
+            point = (Point) Class.forName("core.objects.creation.Point").newInstance();
         } catch (Exception e) {
             System.err.println(e);
         }
