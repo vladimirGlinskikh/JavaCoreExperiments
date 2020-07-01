@@ -1,6 +1,6 @@
-package inner.anonymousInner.nested;
+package core.inner.anonymousInner.nested;
 
-import inner.anonymousInner.nested.OuterClass.*;
+import core.inner.anonymousInner.nested.OuterClass.*;
 
 import java.util.Arrays;
 
@@ -17,17 +17,17 @@ public class InnerClassTest {
         System.out.println(staticNestedClass.d);
         System.out.println(staticNestedClass1.d);
 
-        //inner class example
+        //core.inner class example
         InnerClass innerClass = outer.new InnerClass();
         System.out.println(innerClass.getName());
         System.out.println(innerClass);
         innerClass.setValues();
         System.out.println(innerClass);
 
-        //calling method using local inner class
+        //calling method using local core.inner class
         outer.print("Outer");
 
-        //calling method using anonymous inner class
-        System.out.println(Arrays.toString(outer.getFilesInDir("./src/main/java/inner/anonymousInner/nested", ".java")));
+        //calling method using anonymous core.inner class
+        System.out.println(Arrays.toString(outer.getFilesInDir("./src/main/java/core.inner/anonymousInner/nested", ".java")));
     }
 }

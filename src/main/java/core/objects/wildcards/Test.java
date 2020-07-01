@@ -1,4 +1,4 @@
-package objects.wildcards;
+package core.objects.wildcards;
 
 import java.util.ArrayList;
 import java.util.Collection;
