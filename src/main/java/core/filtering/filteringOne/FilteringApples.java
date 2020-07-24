@@ -1,4 +1,4 @@
-package core.filtering;
+package core.filtering.filteringOne;
 
 import java.util.ArrayList;
 import java.util.Arrays;

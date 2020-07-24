@@ -1,4 +1,8 @@
-package core.filtering;
+package core.filtering.filteringOne;
+
+import core.filtering.filteringTwo.Color;
+
+import static core.filtering.filteringTwo.Color.*;
 
 public class Apple {
     private int weight = 0;
