@@ -14,14 +14,16 @@ public class Main {
                 new Apple(150, RED),
                 new Apple(120, GREEN));
 
-        List<Apple> greenApples = filterGreenApples(inventory);
+        List<Apple> greenApples = filterApplesByColor(inventory, GREEN);
         System.out.println(greenApples);
+        List<Apple> redApples = filterApplesByColor(inventory, RED);
+        System.out.println(redApples);
     }
 
-    public static List<Apple> filterGreenApples(List<Apple> inventory) {
+    public static List<Apple> filterApplesByColor(List<Apple> inventory, Color color) {
         List<Apple> result = new ArrayList<>();
         for (Apple apple : inventory) {
-            if (GREEN.equals(apple.getColor())) {
+            if (apple.getColor().equals(color)) {
                 result.add(apple);
             }
         }
