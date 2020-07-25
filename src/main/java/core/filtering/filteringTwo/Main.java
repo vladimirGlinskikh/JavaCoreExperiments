@@ -16,14 +16,18 @@ public class Main {
                 new Apple(170, RED),
                 new Apple(180, GREEN));
 
-        List<Apple> greenApples = filterApplesByColor(inventory, GREEN);
-        System.out.println(greenApples);
-        List<Apple> redApples = filterApplesByColor(inventory, RED);
-        System.out.println(redApples);
+//        List<Apple> greenApples = filterApplesByColor(inventory, GREEN);
+//        System.out.println(greenApples);
+//        List<Apple> redApples = filterApplesByColor(inventory, RED);
+//        System.out.println(redApples);
 //        List<Apple> heavyApples1 = filterApplesByWeight(inventory, 150);
 //        System.out.println(heavyApples1);
-        List<Apple> heavyApples = filter(inventory, new AppleWeightPredicate());
-        System.out.println(heavyApples);
+//        List<Apple> heavyApples = filter(inventory, new AppleWeightPredicate());
+//        System.out.println(heavyApples);
+        List<Apple> redAndHeavyApples = filterApples(inventory, new AppleRedAndHeavyPredicate());
+        System.out.println(redAndHeavyApples);
+        List<Apple> greenAndHeavyApples = filterApples(inventory, new AppleGreenAndHeavyPredicate());
+        System.out.println(greenAndHeavyApples);
     }
 
     public static List<Apple> filterApplesByColor(List<Apple> inventory, Color color) {
@@ -47,6 +51,16 @@ public class Main {
     }
 
     public static List<Apple> filter(List<Apple> inventory, ApplePredicate predicate) {
+        List<Apple> result = new ArrayList<>();
+        for (Apple apple : inventory) {
+            if (predicate.test(apple)) {
+                result.add(apple);
+            }
+        }
+        return result;
+    }
+
+    public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate predicate) {
         List<Apple> result = new ArrayList<>();
         for (Apple apple : inventory) {
             if (predicate.test(apple)) {
