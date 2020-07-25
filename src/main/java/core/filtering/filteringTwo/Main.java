@@ -24,19 +24,22 @@ public class Main {
 //        System.out.println(heavyApples1);
 //        List<Apple> heavyApples = filter(inventory, new AppleWeightPredicate());
 //        System.out.println(heavyApples);
-        List<Apple> redAndHeavyApples = filterApples(inventory, new AppleRedAndHeavyPredicate());
+        List<Apple> redAndHeavyApples = filterApplesByColor(inventory, RED);
         System.out.println(redAndHeavyApples);
         List<Apple> greenAndHeavyApples = filterApples(inventory, new AppleGreenAndHeavyPredicate());
         System.out.println(greenAndHeavyApples);
     }
 
     public static List<Apple> filterApplesByColor(List<Apple> inventory, Color color) {
-        List<Apple> result = new ArrayList<>();
-        for (Apple apple : inventory) {
-            if (apple.getColor().equals(color)) {
-                result.add(apple);
-            }
-        }
+//        List<Apple> result = new ArrayList<>();
+//        for (Apple apple : inventory) {
+//            if (apple.getColor().equals(color)) {
+//                result.add(apple);
+//            }
+//        }
+//        return result;
+        List<Apple> result =
+                filterApples(inventory, (Apple apple) -> RED.equals(apple.getColor()));
         return result;
     }
 
