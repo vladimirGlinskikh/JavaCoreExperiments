@@ -16,6 +16,10 @@ public class Main {
                 new Apple(170, RED),
                 new Apple(180, GREEN));
 
+        List<Integer> numbers = Arrays.asList(
+                1, 2, 3, 4, 6, 9, 10
+        );
+
 //        List<Apple> greenApples = filterApplesByColor(inventory, GREEN);
 //        System.out.println(greenApples);
 //        List<Apple> redApples = filterApplesByColor(inventory, RED);
@@ -32,6 +36,14 @@ public class Main {
         List<Apple> redApples =
                 filter(inventory, (Apple apple) -> RED.equals(apple.getColor()));
         System.out.println(redApples);
+
+        List<Apple> greenApple =
+                filter(inventory, (Apple apple) -> GREEN.equals(apple.getColor()));
+        System.out.println(greenApple);
+
+        List<Integer> num =
+                filter(numbers, (Integer i) -> i % 2 == 0);
+        System.out.println(num);
     }
 
     public static List<Apple> filterApplesByColor(List<Apple> inventory, Color color) {
@@ -57,15 +69,15 @@ public class Main {
         return result;
     }
 
-    public static List<Apple> filter(List<Apple> inventory, ApplePredicate predicate) {
-        List<Apple> result = new ArrayList<>();
-        for (Apple apple : inventory) {
-            if (predicate.test(apple)) {
-                result.add(apple);
-            }
-        }
-        return result;
-    }
+//    public static List<Apple> filter(List<Apple> inventory, ApplePredicate predicate) {
+//        List<Apple> result = new ArrayList<>();
+//        for (Apple apple : inventory) {
+//            if (predicate.test(apple)) {
+//                result.add(apple);
+//            }
+//        }
+//        return result;
+//    }
 
     public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate predicate) {
         List<Apple> result = new ArrayList<>();
