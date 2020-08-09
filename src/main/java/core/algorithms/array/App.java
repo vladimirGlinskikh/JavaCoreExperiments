@@ -2,47 +2,45 @@ package core.algorithms.array;
 
 public class App {
     public static void main(String[] args) {
-        long[] arr = new long[100];
+        LowArray arr = new LowArray(100);
         int nElems = 0;
         int j;
-        long searchKey;
 
-        arr[0] = 22;
-        arr[1] = 56;
-        arr[2] = 34;
-        arr[3] = 46;
-        arr[4] = 27;
-        arr[5] = 83;
-        arr[6] = 67;
-        arr[7] = 29;
-        arr[8] = 69;
-        arr[9] = 20;
+        arr.setElem(0, 22);
+        arr.setElem(1, 56);
+        arr.setElem(2, 34);
+        arr.setElem(3, 46);
+        arr.setElem(4, 27);
+        arr.setElem(5, 83);
+        arr.setElem(6, 67);
+        arr.setElem(7, 29);
+        arr.setElem(8, 69);
+        arr.setElem(9, 20);
         nElems = 10;
 
         for (j = 0; j < nElems; j++)
-            System.out.print(arr[j] + " ");
-            System.out.println("");
+            System.out.print(arr.getElem(j) + " ");
+        System.out.println("");
 
-        searchKey = 67;
+        int searchKey = 67;
         for (j = 0; j < nElems; j++)
-            if (arr[j] == searchKey)
+            if (arr.getElem(j) == searchKey)
                 break;
-            if (j == nElems)
-                System.out.println("Can't find " + searchKey);
-            else
-                System.out.println("Found " + searchKey);
+        if (j == nElems)
+            System.out.println("Can't find " + searchKey);
+        else
+            System.out.println("Found " + searchKey);
 
-        searchKey = 56;
         for (j = 0; j < nElems; j++)
-            if (arr[j] == searchKey)
+            if (arr.getElem(j) == 56)
                 break;
 
-            for (int k = j; k < nElems; k++)
-                arr[k] = arr[k + 1];
-                nElems--;
+        for (int k = j; k < nElems; k++)
+            arr.setElem(k, arr.getElem(k + 1));
+        nElems--;
 
         for (j = 0; j < nElems; j++)
-            System.out.print(arr[j] + " ");
-            System.out.println("");
+            System.out.print(arr.getElem(j) + " ");
+        System.out.println("");
     }
 }
