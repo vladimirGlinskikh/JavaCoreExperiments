@@ -1,4 +1,4 @@
-package designPatterns.behavioral.observer;
+package designPatterns.behavioral.observer.oneObserver;
 
 public class Observer {
     public void update(){
