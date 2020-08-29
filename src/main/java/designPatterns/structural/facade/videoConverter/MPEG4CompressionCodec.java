@@ -1,0 +1,5 @@
+package designPatterns.structural.facade.videoConverter;
+
+public class MPEG4CompressionCodec implements Codec{
+    public String type = "mp4";
+}
