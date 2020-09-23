@@ -1,7 +1,9 @@
 package core.superinterfaces.classMembers;
 
 public class Point {
-    int x, y;
+    public int x, y;
+    protected int useCount = 0;
+    static protected int totalUseCount = 0;
 
 //    private Point() {
 //        reset();
@@ -25,5 +27,7 @@ public class Point {
     public void move(int dx, int dy) {
         x += dx;
         y += dy;
+        useCount++;
+        totalUseCount++;
     }
 }
