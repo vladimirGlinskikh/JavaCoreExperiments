@@ -1,14 +1,21 @@
 package core.fields.hiding;
 
 public class Point {
-    static int x = 2;
+   static int x = 2;
 }
 
 class Test extends Point {
-    static double x = 4.7;
+//    double x = 4.7;
+
+    void printBoth() {
+        System.out.println(x + " " + super.x);
+    }
 
     public static void main(String[] args) {
-        new Test().printX();
+//        new Test().printX();
+        Test sample = new Test();
+        sample.printBoth();
+        System.out.println(sample.x + " " + ((Point) sample).x);
     }
 
     void printX() {
