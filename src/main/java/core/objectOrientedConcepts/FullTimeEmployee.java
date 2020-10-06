@@ -5,7 +5,7 @@ public class FullTimeEmployee implements Employee {
     private double grossPay;
 
     public FullTimeEmployee() {
-        final String EMPTY_STRING = " ";
+        final String EMPTY_STRING = "";
         name = EMPTY_STRING;
         grossPay = 0.00;
     }
