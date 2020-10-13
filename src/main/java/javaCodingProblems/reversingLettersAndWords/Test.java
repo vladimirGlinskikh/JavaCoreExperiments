@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 public class Test {
     public static void main(String[] args) {
         System.out.println(reverseWords("I love Java!"));
+        System.out.println(reverse("I Love Java!"));
     }
 
 //    private static final String WHITE_SPACE = " ";
@@ -30,5 +31,9 @@ public class Test {
         return PATTERN.splitAsStream(string)
                 .map(w -> new StringBuilder(w).reverse())
                 .collect(Collectors.joining(" "));
+    }
+
+    public static String reverse(String string) {
+        return new StringBuilder(string).reverse().toString();
     }
 }
