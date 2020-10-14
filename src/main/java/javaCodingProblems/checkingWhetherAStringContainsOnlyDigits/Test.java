@@ -1,5 +1,7 @@
 package javaCodingProblems.checkingWhetherAStringContainsOnlyDigits;
 
+import javax.print.DocFlavor;
+
 public class Test {
     public static void main(String[] args) {
         System.out.println(containsOnlyDigits("12 I love Java!"));
@@ -14,8 +16,12 @@ public class Test {
 //        return true;
 //    }
 
-    public static boolean containsOnlyDigits(String string) {
-        return !string.chars()
-                .anyMatch(n -> !Character.isDigit(n));
+//    public static boolean containsOnlyDigits(String string) {
+//        return !string.chars()
+//                .anyMatch(n -> !Character.isDigit(n));
+//    }
+
+    public static boolean containsOnlyDigits(String string){
+        return string.matches("[0-9]+");
     }
 }
