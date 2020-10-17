@@ -18,13 +18,19 @@ public class Test {
 //        return ch.length() == 2 ? result / 2 : result;
 //    }
 
-    public static int countOccurrencesOfACertainCharacter(String string, char ch) {
-        int count = 0;
-        for (int i = 0; i < string.length(); i++) {
-            if (string.charAt(i) == ch) {
-                count++;
-            }
-        }
-        return count;
+//    public static int countOccurrencesOfACertainCharacter(String string, char ch) {
+//        int count = 0;
+//        for (int i = 0; i < string.length(); i++) {
+//            if (string.charAt(i) == ch) {
+//                count++;
+//            }
+//        }
+//        return count;
+//    }
+
+    public static long countOccurrencesOfACertainCharacter(String string, char ch) {
+        return string.chars()
+                .filter(c -> c == ch)
+                .count();
     }
 }
