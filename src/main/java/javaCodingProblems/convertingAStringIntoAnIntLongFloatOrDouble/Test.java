@@ -6,12 +6,17 @@ public class Test {
     private static final String TO_FLOAT = "34.876F";
     private static final String TO_DOUBLE = "13.83523D";
 
-    private static int toInt = Integer.parseInt(TO_INT);
-    private static long toLong = Long.parseLong(TO_LONG);
-    private static float toFloat = Float.parseFloat(TO_FLOAT);
-    private static double toDouble = Double.parseDouble(TO_DOUBLE);
+//    private static int toInt = Integer.parseInt(TO_INT);
+//    private static long toLong = Long.parseLong(TO_LONG);
+//    private static float toFloat = Float.parseFloat(TO_FLOAT);
+//    private static double toDouble = Double.parseDouble(TO_DOUBLE);
+
+    private static Integer toInt = Integer.valueOf(TO_INT);
+    private static Long toLong = Long.valueOf(TO_LONG);
+    private static Float toFloat = Float.valueOf(TO_FLOAT);
+    private static Double toDouble = Double.valueOf(TO_DOUBLE);
 
     public static void main(String[] args) {
-        System.out.println(toInt+ "\n" + toLong + "\n" + toFloat + "\n" + toDouble);
+        System.out.println(toInt + "\n" + toLong + "\n" + toFloat + "\n" + toDouble);
     }
 }
