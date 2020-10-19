@@ -16,7 +16,15 @@ public class Test {
     private static Float toFloat = Float.valueOf(TO_FLOAT);
     private static Double toDouble = Double.valueOf(TO_DOUBLE);
 
+    private static final String WRONG_NUMBER = "343q";
+
     public static void main(String[] args) {
-        System.out.println(toInt + "\n" + toLong + "\n" + toFloat + "\n" + toDouble);
+//        System.out.println(toInt + "\n" + toLong + "\n" + toFloat + "\n" + toDouble);
+        try {
+            Integer toIntWrong1 = Integer.valueOf(WRONG_NUMBER);
+            int toIntWrong2 = Integer.parseInt(WRONG_NUMBER);
+        } catch (NumberFormatException e) {
+            System.err.println(e);
+        }
     }
 }
