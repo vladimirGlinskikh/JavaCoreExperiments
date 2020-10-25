@@ -1,6 +1,8 @@
 package javaCodingProblems.joiningMultipleStringsWithADelimeter;
 
+import java.util.Arrays;
 import java.util.StringJoiner;
+import java.util.stream.Collectors;
 
 public class Test {
     public static void main(String[] args) {
@@ -16,10 +18,13 @@ public class Test {
 //        result.append(args[i]);
 //        return result.toString();
 
-        StringJoiner joiner = new StringJoiner(String.valueOf(delimiter));
-        for (String arg : args) {
-            joiner.add(arg);
-        }
-        return joiner.toString();
+//        StringJoiner joiner = new StringJoiner(String.valueOf(delimiter));
+//        for (String arg : args) {
+//            joiner.add(arg);
+//        }
+//        return joiner.toString();
+
+        return Arrays.stream(args, 0, args.length)
+                .collect(Collectors.joining(String.valueOf(delimiter)));
     }
 }
