@@ -1,5 +1,7 @@
 package javaCodingProblems.checkingWhetherAStringIsAPalindrome;
 
+import java.util.stream.IntStream;
+
 public class Test {
     public static void main(String[] args) {
         System.out.println(isPalindrome("I love Java"));
@@ -27,6 +29,10 @@ public class Test {
 //        }
 //        return true;
 
-        return string.equals(new StringBuilder(string).reverse().toString());
+//        return string.equals(new StringBuilder(string).reverse().toString());
+
+        return IntStream.range(0, string.length() / 2)
+                .noneMatch(p -> string.charAt(p) !=
+                        string.charAt(string.length() - p - 1));
     }
 }
