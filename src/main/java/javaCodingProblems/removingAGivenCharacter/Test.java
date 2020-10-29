@@ -8,6 +8,16 @@ public class Test {
     }
 
     public static String removeCharacter(String string, char ch) {
-        return string.replaceAll(Pattern.quote(String.valueOf(ch)), "");
+//        return string.replaceAll(Pattern.quote(String.valueOf(ch)), "");
+
+        StringBuilder stringBuilder = new StringBuilder();
+        char[] chArray = string.toCharArray();
+
+        for (char c : chArray) {
+            if (c != ch) {
+                stringBuilder.append(c);
+            }
+        }
+        return stringBuilder.toString();
     }
 }
