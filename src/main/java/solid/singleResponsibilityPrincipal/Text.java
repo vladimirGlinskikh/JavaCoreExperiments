@@ -35,7 +35,4 @@ public class Text {
     void findSubTextAndDelete(String string) {
 
     }
-
-    void printText() {
-    }
 }
