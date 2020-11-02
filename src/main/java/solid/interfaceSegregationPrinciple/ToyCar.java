@@ -1,8 +1,13 @@
 package solid.interfaceSegregationPrinciple;
 
-public class ToyHouse implements Toy {
+public class ToyCar implements Toy, Movable {
     double price;
     String color;
+
+    @Override
+    public void move() {
+        System.out.println("ToyCar: Start moving car.");
+    }
 
     @Override
     public void setPrice(double price) {
@@ -16,6 +21,6 @@ public class ToyHouse implements Toy {
 
     @Override
     public String toString() {
-        return "ToyHouse: Toy house- Price: " + price + " Color: " + color;
+        return "ToyCar: Moveable Toy Car- Price: " + price + " Color: " + color;
     }
 }
