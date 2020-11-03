@@ -1,25 +1,27 @@
 package solid.dependencyInversionPrinciple;
 
-public class ElectricPowerSwitch {
-    public LightBulb lightBulb;
+public class ElectricPowerSwitch implements Switch {
+    public Switchable client;
     public boolean on;
 
-    public ElectricPowerSwitch(LightBulb lightBulb) {
-        this.lightBulb = lightBulb;
+    public ElectricPowerSwitch(Switchable client) {
+        this.client = client;
         this.on = false;
     }
 
+    @Override
     public boolean isOn() {
         return this.on;
     }
 
+    @Override
     public void press() {
         boolean checkOn = isOn();
         if (checkOn) {
-            lightBulb.turnOff();
+            client.turnOff();
             this.on = false;
         } else {
-            lightBulb.turnOn();
+            client.turnOn();
             this.on = true;
         }
     }
