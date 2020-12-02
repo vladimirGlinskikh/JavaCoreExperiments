@@ -1,6 +1,7 @@
 package javaCodingProblems.sortingAnArrayOfStringsByLength;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.concurrent.TimeUnit;
 
 public class Test {
@@ -23,12 +24,18 @@ public class Test {
     }
 
     public static void sortArrayByLength(String[] strings, Sort direction) {
+//        if (direction.equals(Sort.ASC)) {
+//            Arrays.sort(strings, (String s1, String s2)
+//                    -> Integer.compare(s1.length(), s2.length()));
+//        } else {
+//            Arrays.sort(strings, (String s1, String s2)
+//                    -> (-1) * Integer.compare(s1.length(), s2.length()));
+//        }
+
         if (direction.equals(Sort.ASC)) {
-            Arrays.sort(strings, (String s1, String s2)
-                    -> Integer.compare(s1.length(), s2.length()));
+            Arrays.sort(strings, Comparator.comparingInt(String::length));
         } else {
-            Arrays.sort(strings, (String s1, String s2)
-                    -> (-1) * Integer.compare(s1.length(), s2.length()));
+            Arrays.sort(strings, Comparator.comparingInt(String::length).reversed());
         }
     }
 
