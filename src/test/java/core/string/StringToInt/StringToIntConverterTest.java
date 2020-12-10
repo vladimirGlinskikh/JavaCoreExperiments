@@ -27,4 +27,12 @@ class StringToIntConverterTest {
         System.out.println(val);
         assertEquals(val, 743);
     }
+
+
+    @Test
+    void convertWithParseIntWithRadix() {
+        int val = stringToIntConverter.convertWithParseIntWithRadix("1010111", 2);
+        System.out.println(val);
+        assertEquals(val, 87);
+    }
 }
