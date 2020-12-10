@@ -22,4 +22,13 @@ public class StringToIntConverter {
             return DEFAULT_PARSED_INT;
         }
     }
+
+    public Integer convertWithValueOf(String string) {
+        try {
+            Integer num = Integer.valueOf(string);
+            return num;
+        } catch (NumberFormatException e) {
+            return DEFAULT_PARSED_INT;
+        }
+    }
 }

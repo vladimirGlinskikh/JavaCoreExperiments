@@ -45,4 +45,11 @@ class StringToIntConverterTest {
         System.out.println(val2);
         assertEquals(val2, 0);
     }
+
+    @Test
+    void convertWithValueOf() {
+        int val = stringToIntConverter.convertWithValueOf(string);
+        System.out.println(val);
+        assertEquals(val, 743);
+    }
 }
