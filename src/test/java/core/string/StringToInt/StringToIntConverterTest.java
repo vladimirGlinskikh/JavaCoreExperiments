@@ -35,4 +35,14 @@ class StringToIntConverterTest {
         System.out.println(val);
         assertEquals(val, 87);
     }
+
+    @Test
+    void tryConvertWithParseInt() {
+        int val1 = stringToIntConverter.tryConvertWithParseInt(string);
+        int val2 = stringToIntConverter.tryConvertWithParseInt("abc");
+        System.out.println(val1);
+        assertEquals(val1, 743);
+        System.out.println(val2);
+        assertEquals(val2, 0);
+    }
 }
