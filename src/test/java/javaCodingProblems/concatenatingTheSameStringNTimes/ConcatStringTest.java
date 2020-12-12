@@ -23,8 +23,19 @@ class ConcatStringTest {
 
     @Test
     void concatRepeat() {
-        String str = concatString.concatRepeat("concat", 3);
+        String str = concatString.concatRepeat(string, 3);
         System.out.println(str);
         assertEquals("concatconcatconcat", "concatconcatconcat");
+    }
+
+    @Test
+    void hasOnlySubstrings() {
+        boolean str = concatString.hasOnlySubstrings("concatconcat");
+        System.out.println(str);
+        assertTrue(str);
+
+        boolean str1 = concatString.hasOnlySubstrings("concat");
+        System.out.println(str1);
+        assertFalse(str1);
     }
 }
