@@ -2,11 +2,13 @@ package algorithms.recursion;
 
 public class Factorial {
 
-    public static int factorial(int n) {
+    public int factorial(int n) {
         if (n == 0) {
             return 1;
         } else {
-            return n * factorial(n - 1);
+            int f = n * factorial(n - 1);
+            System.out.print(f + " ");
+            return f;
         }
     }
 }
