@@ -16,8 +16,11 @@ public class App {
 
     public static void main(String[] args) {
 //        System.out.println(days.indent(10));
-        for (int i = 0; i < days.size(); i++) {
-            System.out.print(days.get(i).indent(i));
-        }
+//        for (int i = 0; i < days.size(); i++) {
+//            System.out.print(days.get(i).indent(i));
+//        }
+
+        days.stream()
+                .forEachOrdered(d -> System.out.print(d.indent(d.length())));
     }
 }
