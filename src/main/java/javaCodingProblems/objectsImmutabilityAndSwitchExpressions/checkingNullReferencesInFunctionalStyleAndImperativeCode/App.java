@@ -3,15 +3,16 @@ package javaCodingProblems.objectsImmutabilityAndSwitchExpressions.checkingNullR
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class App {
     public List<Integer> eventIntegers(List<Integer> integers) {
-        if (integers == null) {
+        if (Objects.isNull(integers)) {
             return Collections.EMPTY_LIST;
         }
         List<Integer> evens = new ArrayList<>();
         for (Integer nr : integers) {
-            if (nr != null && nr % 2 == 0) {
+            if (Objects.nonNull(nr) && nr % 2 == 0) {
                 evens.add(nr);
             }
         }
