@@ -11,10 +11,10 @@ public class App {
 
     public static int fun1(int n) {
         int i, m = 0;
-        i = 1;
-        while (i < n) {
+        i = n;
+        while (i > 0) {
             m += 1;
-            i = i * 2;
+            i = i / 2;
         }
         return m;
     }
