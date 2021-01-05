@@ -10,11 +10,13 @@ public class App {
     }
 
     public static int fun1(int n) {
-        int i, m = 0;
-        i = n;
-        while (i > 0) {
-            m += 1;
-            i = i / 2;
+        int i, j, k, m = 0;
+        for (i = 0; i < n; i++) {
+            for (j = 0; j < n; j++) {
+                for (k = 0; k < n; k++) {
+                    m += 1;
+                }
+            }
         }
         return m;
     }
