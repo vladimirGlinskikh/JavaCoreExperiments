@@ -1,7 +1,10 @@
 package algorithms.binarySearch;
 
+import java.util.Arrays;
+
 public class BinarySearch {
     public int rank(int key, int[] a) {
+        Arrays.sort(a);
         int lo = 0;
         int hi = a.length - 1;
         while (lo <= hi) {
