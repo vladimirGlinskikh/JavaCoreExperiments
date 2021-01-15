@@ -1,4 +1,4 @@
-package core.objectOrientedConcepts;
+package core.objectOrientedConcepts.dataAbstraction.anInterfaceAndAClassThatImplementsTheInterface;
 
 import java.text.DecimalFormat;
 

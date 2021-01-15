@@ -1,5 +1,8 @@
 package core.objectOrientedConcepts;
 
+import core.objectOrientedConcepts.dataAbstraction.anInterfaceAndAClassThatImplementsTheInterface.Employee;
+import core.objectOrientedConcepts.dataAbstraction.anInterfaceAndAClassThatImplementsTheInterface.FullTimeEmployee;
+
 public class HourlyEmployee extends FullTimeEmployee implements Employee {
     private String name;
     private int hoursWorked;

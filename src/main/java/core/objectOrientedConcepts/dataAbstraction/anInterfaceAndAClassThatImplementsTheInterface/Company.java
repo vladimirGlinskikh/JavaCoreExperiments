@@ -1,4 +1,4 @@
-package core.objectOrientedConcepts;
+package core.objectOrientedConcepts.dataAbstraction.anInterfaceAndAClassThatImplementsTheInterface;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -13,6 +13,7 @@ public class Company {
         final String INPUT_PROMPT = "Please enter the path for the file of employees: ";
         final String BEST_PAID_MESSAGE = "\n\nThe best-paid employee (and gross pay) is ";
         final String NO_INPUT_MESSAGE = "\n\nError: There were no employees scanned in.";
+
         String fileName;
         System.out.print(INPUT_PROMPT);
         fileName = new Scanner(System.in).nextLine();

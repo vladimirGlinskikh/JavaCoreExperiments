@@ -1,4 +1,4 @@
-package core.abstractMethodsAndInterfaces;
+package core.objectOrientedConcepts.dataAbstraction.abstractMethodsAndInterfaces;
 
 public class Circle implements Figure {
     private int xCoord, yCoord, radius;

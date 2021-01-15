@@ -1,4 +1,4 @@
-package core.abstractMethodsAndInterfaces;
+package core.objectOrientedConcepts.dataAbstraction.abstractMethodsAndInterfaces;
 
 public interface Figure {
     int MAX_X_COORD = 1024;

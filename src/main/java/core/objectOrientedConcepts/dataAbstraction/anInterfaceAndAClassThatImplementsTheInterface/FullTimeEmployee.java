@@ -1,4 +1,4 @@
-package core.objectOrientedConcepts;
+package core.objectOrientedConcepts.dataAbstraction.anInterfaceAndAClassThatImplementsTheInterface;
 
 public class FullTimeEmployee implements Employee {
     private String name;
