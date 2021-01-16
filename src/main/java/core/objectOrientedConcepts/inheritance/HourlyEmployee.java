@@ -49,7 +49,7 @@ public class HourlyEmployee extends FullTimeEmployee implements Employee {
     }
 
     public String toString() {
-        final String FULL_TIME_STATUS = "HOURLY";
+        final String FULL_TIME_STATUS = "FULL TIME";
         return super.toString() + FULL_TIME_STATUS;
     }
 }
