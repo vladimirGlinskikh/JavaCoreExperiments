@@ -1,14 +1,13 @@
-package core.objectOrientedConcepts;
+package core.objectOrientedConcepts.inheritance;
 
 import core.objectOrientedConcepts.dataAbstraction.anInterfaceAndAClassThatImplementsTheInterface.Employee;
 import core.objectOrientedConcepts.dataAbstraction.anInterfaceAndAClassThatImplementsTheInterface.FullTimeEmployee;
 
 public class HourlyEmployee extends FullTimeEmployee implements Employee {
-    private String name;
-    private int hoursWorked;
-    protected double payRate, regularPay, overtimePay, grossPay;
+    protected int hoursWorked;
+    protected double payRate, regularPay, overtimePay;
 
-    public final static int MAX_REGULAR_HOURSE = 40;
+    public final static int MAX_REGULAR_HOURS = 40;
     public final static double OVERTIME_FACTOR = 1.5;
 
     public HourlyEmployee() {
@@ -23,12 +22,12 @@ public class HourlyEmployee extends FullTimeEmployee implements Employee {
         this.hoursWorked = hoursWorked;
         this.payRate = payRate;
 
-        if (hoursWorked <= MAX_REGULAR_HOURSE) {
+        if (hoursWorked <= MAX_REGULAR_HOURS) {
             regularPay = hoursWorked * payRate;
             overtimePay = 0.00;
         } else {
-            regularPay = MAX_REGULAR_HOURSE * payRate;
-            overtimePay = (hoursWorked - MAX_REGULAR_HOURSE) * (payRate * OVERTIME_FACTOR);
+            regularPay = MAX_REGULAR_HOURS * payRate;
+            overtimePay = (hoursWorked - MAX_REGULAR_HOURS) * (payRate * OVERTIME_FACTOR);
         }
         grossPay = regularPay + overtimePay;
     }

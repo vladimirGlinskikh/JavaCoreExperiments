@@ -1,8 +1,8 @@
 package core.objectOrientedConcepts.dataAbstraction.anInterfaceAndAClassThatImplementsTheInterface;
 
 public class FullTimeEmployee implements Employee {
-    private String name;
-    private double grossPay;
+    protected String name;
+    protected double grossPay;
 
     public FullTimeEmployee() {
         final String EMPTY_STRING = "";
@@ -26,8 +26,6 @@ public class FullTimeEmployee implements Employee {
     }
 
     public String toString() {
-        final String EMPLOYMENT_STATUS = "FULL TIME";
-
-        return name + MONEY.format(grossPay) + EMPLOYMENT_STATUS;
+        return name + MONEY.format(grossPay) + "HOURLY";
     }
 }

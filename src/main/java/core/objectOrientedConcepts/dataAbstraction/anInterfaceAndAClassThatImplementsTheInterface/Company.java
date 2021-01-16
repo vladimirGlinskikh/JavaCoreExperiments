@@ -39,7 +39,7 @@ public class Company {
         return bestPaid;
     }
 
-    private FullTimeEmployee getNextEmployee(Scanner scanner) {
+    protected FullTimeEmployee getNextEmployee(Scanner scanner) {
         Scanner lineScanner = new Scanner(scanner.nextLine());
         String name = lineScanner.next();
         double grossPay = lineScanner.nextDouble();
