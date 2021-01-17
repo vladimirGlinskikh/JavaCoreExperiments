@@ -8,7 +8,7 @@ class PlayerTest {
     @Test
     public void equalsTwoClassesFalse() {
         Player p1 = new Player(1, "Vladimir");
-        Player p2 = new Player(1, "Vladimir");
+        Player p2 = new Player(1, "VladimirG");
         assertNotEquals(p2, p1);
     }
 
@@ -22,7 +22,7 @@ class PlayerTest {
     @Test
     public void equalsHashCodeFalse(){
         Player p1 = new Player(1, "Vladimir");
-        Player p2 = new Player(1, "Vladimir");
+        Player p2 = new Player(1, "VladimirG");
         System.out.println(p1.hashCode());
         System.out.println(p2.hashCode());
         assertNotEquals(p2.hashCode(), p1.hashCode());
