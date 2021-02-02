@@ -45,7 +45,7 @@ public class HourlyEmployee extends FullTimeEmployee implements Employee {
     }
 
     public double getOvertimePay() {
-        return getOvertimePay();
+        return overtimePay;
     }
 
     public String toString() {
