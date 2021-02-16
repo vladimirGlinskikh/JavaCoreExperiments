@@ -1,10 +1,9 @@
 package sololearn.shapes;
 
 public class Circle extends Shape {
-    int width;
 
     public Circle(int width) {
-        this.width = width;
+        super(width);
     }
 
     @Override
