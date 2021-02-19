@@ -1,4 +1,4 @@
-package core.objectOrientedConcepts.exceptionHandling;
+package core.objectOrientedConcepts.exceptionHandling.exceptionsHandlings;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package core.objectOrientedConcepts.exceptionHandling;
+package core.objectOrientedConcepts.exceptionHandling.exceptionsHandlings;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;
