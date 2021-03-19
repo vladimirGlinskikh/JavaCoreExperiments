@@ -1,4 +1,4 @@
-package javaExperiments.comparation;
+package javaExperiments.comparationAndComparator;
 
 import java.util.*;
 
