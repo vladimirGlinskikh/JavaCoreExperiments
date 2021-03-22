@@ -58,8 +58,48 @@ public class ArrayListMethods {
         System.out.println("contains: " + list.contains("one"));
         System.out.println("--------------------------");
 
+        System.out.println("containsAll: " + list.containsAll(arrayList));
+        System.out.println("--------------------------");
+
+        System.out.println("removeAll: " + list.removeAll(arrayList));
+        System.out.println("--------------------------");
+
+//        System.out.println("retainAll: " + list.retainAll(arrayList));
+//        System.out.println("--------------------------");
+
         System.out.println("toString: " + list.toString());
         System.out.println("--------------------------");
+
+        System.out.println("containsAll: " + list.containsAll(arrayList));
+        System.out.println("--------------------------");
+
+        List<String> list1 = list.subList(1, 3);
+        System.out.println("list1 before add: " + list1);
+        list1.add("list5");
+        list1.add("list6");
+        System.out.println("list1 after add: " + list1);
+        System.out.println("subList: " + list1.subList(1, 3));
+        System.out.println("--------------------------");
+
+        System.out.println("toString: " + list.toString());
+        System.out.println("--------------------------");
+
+        String[] array = list.toArray(new String[10]);
+        System.out.print("toArray: ");
+        for (String s : array) {
+            System.out.print(s + " ");
+        }
+        System.out.println("\n" + "--------------------------");
+
+        List<Integer> list2 = List.of(3, 2, 7);
+        System.out.println("List.of: " + list2);
+//        list2.add(34);
+        System.out.println("----------------------------");
+
+        List<String> list3 = List.copyOf(list);
+        System.out.println("List.copyOf: " + list3);
+        System.out.println("------------------------");
+
 
         list.clear();
         System.out.println("clear: " + list);
