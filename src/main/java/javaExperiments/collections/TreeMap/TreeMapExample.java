@@ -1,10 +1,9 @@
-package javaExperiments.collections.ThreeMap;
+package javaExperiments.collections.TreeMap;
 
-import java.util.Comparator;
 import java.util.Objects;
 import java.util.TreeMap;
 
-public class ThreeMapExample {
+public class TreeMapExample {
     public static void main(String[] args) {
 //        TreeMap<Double, Student> treeMap = new TreeMap<>();
         TreeMap<Student, Double> treeMap = new TreeMap<>((o1, o2) -> o1.name.compareTo(o2.name));
