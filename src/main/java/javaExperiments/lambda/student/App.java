@@ -2,6 +2,7 @@ package javaExperiments.lambda.student;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class App {
     public static void main(String[] args) {
@@ -17,15 +18,30 @@ public class App {
 
         StudentInfo studentInfo = new StudentInfo();
 
-        studentInfo.checkStudents(studentList, new StudentCheck() {
-            @Override
-            public boolean check(Student student) {
-                return student.age > 35;
-            }
-        });
+//        studentInfo.checkStudents(studentList, new StudentCheck() {
+//            @Override
+//            public boolean check(Student student) {
+//                return student.age > 35;
+//            }
+//        });
 
         System.out.println("-------------------");
         studentInfo.checkStudents(studentList, (Student st) -> st.avgGrade > 8);
+        System.out.println("--------------------");
+        studentInfo.checkStudents(studentList, predicate -> predicate.sex == 'f');
+        System.out.println("--------------------");
+        Predicate<Student> predicate1 = student -> student.course > 3;
+        studentInfo.checkStudents(studentList, predicate1);
+        System.out.println("-----------------");
+        Predicate<Student> predicate2 = student -> student.age <= 35;
+        studentInfo.checkStudents(studentList, predicate2);
+        System.out.println("-----------------");
+        studentInfo.checkStudents(studentList, predicate1.and(predicate2));
+        System.out.println("---------------");
+        studentInfo.checkStudents(studentList, predicate1.or(predicate2));
+        System.out.println("---------------");
+        studentInfo.checkStudents(studentList, predicate1.negate());
+        System.out.println("---------------");
 
 
 //        studentInfo.printStudentsOverGrade(studentList, 8);

@@ -1,12 +1,13 @@
 package javaExperiments.lambda.student;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 public class StudentInfo {
 
-    void checkStudents(List<Student> stList, StudentCheck stCheck) {
+    void checkStudents(List<Student> stList, Predicate<Student> predicate) {
         for (Student s : stList) {
-            if (stCheck.check(s)) {
+            if (predicate.test(s)) {
                 System.out.println(s);
             }
         }
