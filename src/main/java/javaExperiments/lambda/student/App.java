@@ -2,6 +2,7 @@ package javaExperiments.lambda.student;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class App {
@@ -17,6 +18,8 @@ public class App {
         studentList.add(student4);
 
         StudentInfo studentInfo = new StudentInfo();
+        double res = avgOfSmth(studentList, student -> student.avgGrade);
+        System.out.println(res);
 
 //        studentInfo.checkStudents(studentList, new StudentCheck() {
 //            @Override
@@ -25,23 +28,23 @@ public class App {
 //            }
 //        });
 
-        System.out.println("-------------------");
-        studentInfo.checkStudents(studentList, (Student st) -> st.avgGrade > 8);
-        System.out.println("--------------------");
-        studentInfo.checkStudents(studentList, predicate -> predicate.sex == 'f');
-        System.out.println("--------------------");
-        Predicate<Student> predicate1 = student -> student.course > 3;
-        studentInfo.checkStudents(studentList, predicate1);
-        System.out.println("-----------------");
-        Predicate<Student> predicate2 = student -> student.age <= 35;
-        studentInfo.checkStudents(studentList, predicate2);
-        System.out.println("-----------------");
-        studentInfo.checkStudents(studentList, predicate1.and(predicate2));
-        System.out.println("---------------");
-        studentInfo.checkStudents(studentList, predicate1.or(predicate2));
-        System.out.println("---------------");
-        studentInfo.checkStudents(studentList, predicate1.negate());
-        System.out.println("---------------");
+//        System.out.println("-------------------");
+//        studentInfo.checkStudents(studentList, (Student st) -> st.avgGrade > 8);
+//        System.out.println("--------------------");
+//        studentInfo.checkStudents(studentList, predicate -> predicate.sex == 'f');
+//        System.out.println("--------------------");
+//        Predicate<Student> predicate1 = student -> student.course > 3;
+//        studentInfo.checkStudents(studentList, predicate1);
+//        System.out.println("-----------------");
+//        Predicate<Student> predicate2 = student -> student.age <= 35;
+//        studentInfo.checkStudents(studentList, predicate2);
+//        System.out.println("-----------------");
+//        studentInfo.checkStudents(studentList, predicate1.and(predicate2));
+//        System.out.println("---------------");
+//        studentInfo.checkStudents(studentList, predicate1.or(predicate2));
+//        System.out.println("---------------");
+//        studentInfo.checkStudents(studentList, predicate1.negate());
+//        System.out.println("---------------");
 
 
 //        studentInfo.printStudentsOverGrade(studentList, 8);
@@ -50,5 +53,14 @@ public class App {
 //        System.out.println("-----------------");
 //        studentInfo.printStudentsMixCondition(studentList, 34, 8.0, 'f');
 //        System.out.println("-----------------");
+    }
+
+    private static double avgOfSmth(List<Student> list, Function<Student, Double> f) {
+        double result = 0;
+        for (Student s : list) {
+            result += f.apply(s);
+        }
+        result = result / list.size();
+        return result;
     }
 }
