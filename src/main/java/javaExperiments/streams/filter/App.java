@@ -1,6 +1,7 @@
 package javaExperiments.streams.filter;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,6 +19,11 @@ public class App {
 
         studentList = studentList.stream()
                 .filter(element -> element.getAge() > 25 && element.getAvgGrade() <= 9.5)
+                .collect(Collectors.toList());
+        System.out.println(studentList);
+
+        studentList = studentList.stream()
+                .sorted(Comparator.comparing(Student::getCourse))
                 .collect(Collectors.toList());
         System.out.println(studentList);
     }
