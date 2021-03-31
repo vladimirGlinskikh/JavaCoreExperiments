@@ -17,14 +17,20 @@ public class App {
         studentList.add(student3);
         studentList.add(student4);
 
-        studentList = studentList.stream()
-                .filter(element -> element.getAge() > 25 && element.getAvgGrade() <= 9.5)
-                .collect(Collectors.toList());
-        System.out.println(studentList);
+//        studentList = studentList.stream()
+//                .filter(element -> element.getAge() > 25 && element.getAvgGrade() <= 9.5)
+//                .collect(Collectors.toList());
+//        System.out.println(studentList);
+//
+//        studentList = studentList.stream()
+//                .sorted(Comparator.comparing(Student::getCourse))
+//                .collect(Collectors.toList());
+//        System.out.println(studentList);
 
-        studentList = studentList.stream()
-                .sorted(Comparator.comparing(Student::getCourse))
-                .collect(Collectors.toList());
-        System.out.println(studentList);
+        studentList.stream()
+                .peek(element -> element.setName(element.getName().toUpperCase()))
+                .filter(element -> element.getSex() == 'f')
+                .sorted(Comparator.comparingInt(Student::getAge))
+                .forEach(System.out::println);
     }
 }
