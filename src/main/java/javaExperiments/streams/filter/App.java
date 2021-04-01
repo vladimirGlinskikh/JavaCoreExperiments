@@ -27,10 +27,12 @@ public class App {
 //                .collect(Collectors.toList());
 //        System.out.println(studentList);
 
-        studentList.stream()
+        Student student = studentList.stream()
                 .peek(element -> element.setName(element.getName().toUpperCase()))
                 .filter(element -> element.getSex() == 'f')
                 .sorted(Comparator.comparingInt(Student::getAge))
-                .forEach(System.out::println);
+//                .forEach(System.out::println);
+                .findFirst().get();
+        System.out.println(student);
     }
 }
