@@ -22,8 +22,13 @@ public class App {
 //                .min(Comparator.comparingInt(Student::getAge)).get();
 //        System.out.println(student);
 
-        Student student = studentList.stream()
-                .max(Comparator.comparingInt(Student::getAge)).get();
-        System.out.println(student);
+//        Student student = studentList.stream()
+//                .max(Comparator.comparingInt(Student::getAge)).get();
+//        System.out.println(student);
+
+        studentList.stream()
+                .filter(element -> element.getAge() > 32)
+                .limit(2)
+                .forEach(System.out::println);
     }
 }
