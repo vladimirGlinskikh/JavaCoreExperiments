@@ -9,8 +9,9 @@ public class App {
         Stream<Integer> stream3 = Stream.concat(stream1, stream2);
 
 //        stream3.distinct().forEach(System.out::println);
-        System.out.println(stream3./*distinct().*/count());
+//        System.out.println(stream3./*distinct().*/count());
 //        System.out.println("------------------");
 //        stream3.forEach(System.out::println);
+        System.out.println(stream3.distinct().peek(System.out::println).count());
     }
 }
