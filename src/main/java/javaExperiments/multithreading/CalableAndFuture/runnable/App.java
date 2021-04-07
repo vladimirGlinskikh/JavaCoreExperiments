@@ -1,4 +1,4 @@
-package javaExperiments.multithreading.CalableAndFuture;
+package javaExperiments.multithreading.CalableAndFuture.runnable;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
