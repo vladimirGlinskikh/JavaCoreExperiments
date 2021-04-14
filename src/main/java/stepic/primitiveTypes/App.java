@@ -2,12 +2,12 @@ package stepic.primitiveTypes;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println(subtractTheSecondNumberFromTheFirst(7, 2));
+        System.out.println(subtractTheSecondNumberFromTheFirst(55, 23));
     }
 
-    public static int subtractTheSecondNumberFromTheFirst(int first, int second) {
+    public static String subtractTheSecondNumberFromTheFirst(int first, int second) {
         int count;
         count = first / second;
-        return count;
+        return count + " " + first % second;
     }
 }
