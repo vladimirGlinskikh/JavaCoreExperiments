@@ -3,14 +3,18 @@ package javaExperiments.IO.serialization;
 import java.io.Serializable;
 
 public class Employee implements Serializable {
+    static final long serialVersionUID = 1;
+
     private String name;
+    private String surname;
     private String department;
     private int age;
-    private double salary;
+    transient private double salary;
     private Car car;
 
-    public Employee(String name, String department, int age, double salary, Car car) {
+    public Employee(String name, String surname, String department, int age, double salary, Car car) {
         this.name = name;
+        this.surname = surname;
         this.department = department;
         this.age = age;
         this.salary = salary;
@@ -21,6 +25,7 @@ public class Employee implements Serializable {
     public String toString() {
         return "Employee{" +
                 "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
                 ", department='" + department + '\'' +
                 ", age=" + age +
                 ", salary=" + salary +
