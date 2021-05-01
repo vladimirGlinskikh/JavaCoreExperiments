@@ -23,6 +23,16 @@ public class ChannelBufferExample {
                 byteRead = channel.read(buffer);
             }
             System.out.println(context);
+
+            String text = "\nEducation is a progressive discovery of our own ignorance. " +
+                    "William James \"Will\" Durant";
+//            ByteBuffer buffer1 = ByteBuffer.allocate(text.getBytes().length);
+//            buffer1.put(text.getBytes());
+//            buffer1.flip();
+//            channel.write(buffer1);
+
+            ByteBuffer buffer1 = ByteBuffer.wrap(text.getBytes());
+            channel.write(buffer1);
         } catch (IOException e) {
             e.printStackTrace();
         }
