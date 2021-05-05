@@ -9,9 +9,13 @@ public class FileTree {
 //        Path path = Paths.get("/home/vg/Desktop/githowto");
 //        Files.walkFileTree(path, new MyFileVisitor());
 
-        Path source = Paths.get("/home/vg/Desktop/githowto");
-        Path destination = Paths.get("/home/vg/Desktop/CopyHowTo");
-        Files.walkFileTree(source, new CopyFileVisitor(source, destination));
+//        Path source = Paths.get("/home/vg/Desktop/githowto");
+//        Path destination = Paths.get("/home/vg/Desktop/CopyHowTo");
+//        Files.walkFileTree(source, new CopyFileVisitor(source, destination));
+//        System.out.println("Done!");
+
+        Path path = Paths.get("/home/vg/Desktop/CopyHowTo");
+        Files.walkFileTree(path, new FileDelete());
         System.out.println("Done!");
     }
 }
@@ -63,6 +67,22 @@ class CopyFileVisitor extends SimpleFileVisitor<Path> {
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
         Path newDestination = destination.resolve(source.relativize(file));
         Files.copy(file, newDestination, StandardCopyOption.REPLACE_EXISTING);
+        return FileVisitResult.CONTINUE;
+    }
+}
+
+class FileDelete extends SimpleFileVisitor<Path> {
+    @Override
+    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+        System.out.println("Delete file with name: " + file.getFileName());
+        Files.delete(file);
+        return FileVisitResult.CONTINUE;
+    }
+
+    @Override
+    public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+        System.out.println("Delete from directory: " + dir.getFileName());
+        Files.delete(dir);
         return FileVisitResult.CONTINUE;
     }
 }
