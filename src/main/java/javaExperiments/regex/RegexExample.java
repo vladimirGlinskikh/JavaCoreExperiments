@@ -8,7 +8,7 @@ public class RegexExample {
         String s = "Vladimir Glinskikh, Kazakhstan, Almaty, Lenin street, 34, Flat 12," +
                 "email: vladimir.v@gmail.com, Postcode: AAD78, Phone number: +72342389234";
 
-        Pattern pattern = Pattern.compile("[email]");
+        Pattern pattern = Pattern.compile("\\w+");
         Matcher matcher = pattern.matcher(s);
 
         while (matcher.find()) {
