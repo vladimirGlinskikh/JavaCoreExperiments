@@ -12,4 +12,12 @@ public class Receipt {
         this.discount = discount;
         this.tax = tax;
     }
+
+
+    public Receipt(Receipt receipt) {
+        item = receipt.item;
+        price = receipt.price;
+        discount = receipt.discount;
+        tax = receipt.tax;
+    }
 }

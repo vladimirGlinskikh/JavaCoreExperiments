@@ -1,14 +1,14 @@
 package functionalInterfaces.receipt;
 
 @FunctionalInterface
-public interface ReceiptPrinter {
-    void print(Receipt receipt);
+public interface ReceiptPrinter<X extends Receipt> {
+    void print(X receipt);
 
-    private double getDiscountedPrice(Receipt receipt) {
+    private double getDiscountedPrice(X receipt) {
         return receipt.price - (receipt.price * receipt.discount);
     }
 
-    default double computeTotal(Receipt receipt) {
+    default double computeTotal(X receipt) {
         double discountedPrice = getDiscountedPrice(receipt);
         return discountedPrice + (discountedPrice * receipt.tax);
     }
