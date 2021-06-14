@@ -1,10 +1,17 @@
-package javaCodingProblems.stringsAndNumbers.checkingWhetherAStringIsAPalindrome;
+package stepic.palindrome;
 
+import java.util.Scanner;
 import java.util.stream.IntStream;
 
-public class Test {
+public class Main {
     public static void main(String[] args) {
-        System.out.println(isPalindrome("I love Java"));
+        Scanner scanner = new Scanner(System.in);
+        String word = scanner.nextLine();
+        if (isPalindrome(word)) {
+            System.out.println("yes");
+        } else {
+            System.out.println("no");
+        }
     }
 
     public static boolean isPalindrome(String string) {
