@@ -12,8 +12,18 @@ public class PredicateHelper {
     }
 
     public static void main(String[] args) {
-        result(x -> x > 2, 6);
-        result(s -> s.charAt(0) == 'H', "Hello");
-        result(y -> y >= 4.0, 3.9);
+//        result(x -> x > 2, 6);
+//        result(s -> s.charAt(0) == 'H', "Hello");
+//        result(y -> y >= 4.0, 3.9);
+        Predicate<Integer> p1 = x -> x > 10;
+        System.out.println(p1.or(x -> x < 31).test(9));//true
+
+        result(p1.or(x -> x < 3), 9);//false
+        result(p1.or(x -> x < 3), 2);//true
+        result(p1.or(x -> x < 3), 5);//false
+        System.out.println("---------------------");
+        result(p1.and(x -> x < 3), 9);//false
+        result(p1.and(x -> x < 3), 2);//false
+        result(p1.and(x -> x < 3), 5);//false
     }
 }
