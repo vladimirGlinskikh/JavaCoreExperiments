@@ -15,12 +15,15 @@ public class PredicateHelper {
 //        result(x -> x > 2, 6);
 //        result(s -> s.charAt(0) == 'H', "Hello");
 //        result(y -> y >= 4.0, 3.9);
-        Predicate<Integer> p1 = x -> x > 10;
-        Predicate<Integer> p2 = Predicate.isEqual(5);
-        if (p2.test(5)) {
-            System.out.println("The Predicate is true");
-            System.out.println(p1.or(Predicate.isEqual(5)).test(5));
-        }
+        Predicate<Integer> p1 = x -> x > 7;
+//        Predicate<Integer> p2 = Predicate.isEqual(5);
+
+        System.out.println(p1.and(Predicate.not(x -> x % 2 == 1)).test(8));
+
+//        if (p2.test(5)) {
+//            System.out.println("The Predicate is true");
+//            System.out.println(p1.or(Predicate.isEqual(5)).test(5));
+//        }
 //        System.out.println(p1.or(x -> x < 31).test(9));//true
 
 //        result(p1.or(x -> x < 3), 9);//false
