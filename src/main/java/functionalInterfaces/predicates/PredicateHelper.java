@@ -1,9 +1,6 @@
 package functionalInterfaces.predicates;
 
-import java.util.function.DoublePredicate;
-import java.util.function.IntPredicate;
-import java.util.function.LongPredicate;
-import java.util.function.Predicate;
+import java.util.function.*;
 
 public class PredicateHelper {
 
@@ -16,12 +13,18 @@ public class PredicateHelper {
 //    }
 
     public static void main(String[] args) {
-        IntPredicate i = x -> x > 5;
-        LongPredicate l = y -> y % 2 == 0;
-        DoublePredicate d = z -> z > 8.0;
-        System.out.println(i.test(2));
-        System.out.println(l.or(a -> a == 6L).test(10L));
-        System.out.println(d.and(b -> b < 9.0).test(8.5));
+        BiPredicate<String, Integer> biPredicate = (x, y) -> x.equals("Test")
+                && y > 100_000;
+        String position = "Test";
+        int salary = 140_000;
+        System.out.println(biPredicate.test(position, salary));
+
+//        IntPredicate i = x -> x > 5;
+//        LongPredicate l = y -> y % 2 == 0;
+//        DoublePredicate d = z -> z > 8.0;
+//        System.out.println(i.test(2));
+//        System.out.println(l.or(a -> a == 6L).test(10L));
+//        System.out.println(d.and(b -> b < 9.0).test(8.5));
 
 //        result(x -> x > 2, 6);
 //        result(s -> s.charAt(0) == 'H', "Hello");
