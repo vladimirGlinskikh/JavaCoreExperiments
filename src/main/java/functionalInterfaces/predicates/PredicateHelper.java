@@ -1,41 +1,52 @@
 package functionalInterfaces.predicates;
 
+import java.util.function.DoublePredicate;
+import java.util.function.IntPredicate;
+import java.util.function.LongPredicate;
 import java.util.function.Predicate;
 
 public class PredicateHelper {
-    public static <X> void result(Predicate<X> predicate, X arg) {
-        if (predicate.test(arg)) {
-            System.out.println("The Predicate is true for " + arg);
-        } else {
-            System.out.println("The Predicate is false for " + arg);
-        }
-    }
+
+//    public static <X> void result(Predicate<X> predicate, X arg) {
+//        if (predicate.test(arg)) {
+//            System.out.println("The Predicate is true for " + arg);
+//        } else {
+//            System.out.println("The Predicate is false for " + arg);
+//        }
+//    }
 
     public static void main(String[] args) {
+        IntPredicate i = x -> x > 5;
+        LongPredicate l = y -> y % 2 == 0;
+        DoublePredicate d = z -> z > 8.0;
+        System.out.println(i.test(2));
+        System.out.println(l.or(a -> a == 6L).test(10L));
+        System.out.println(d.and(b -> b < 9.0).test(8.5));
+
 //        result(x -> x > 2, 6);
 //        result(s -> s.charAt(0) == 'H', "Hello");
 //        result(y -> y >= 4.0, 3.9);
 //        Predicate<Integer> p1 = x -> x > 7;
 //        Predicate<Integer> p2 = Predicate.isEqual(5);
-        Predicate<String> lengthWord = x -> x.length() >= 4;
-        Predicate<String> char0isT = x -> x.charAt(0) == 't';
+//        Predicate<String> lengthWord = x -> x.length() >= 4;
+//        Predicate<String> char0isT = x -> x.charAt(0) == 't';
 
-        System.out.println(lengthWord.and(char0isT).test("test"));
-
-        Predicate<String> nullProtectedlength = new Predicate<String>() {
-            @Override
-            public boolean test(String s) {
-                return s.length() >= 4;
-            }
-
-            @Override
-            public Predicate<String> and(Predicate<? super String> other) {
-                return x -> x == null ? false : test(x) && other.test(x);
-            }
-        };
-
-        System.out.println(nullProtectedlength.and(char0isT).test("test"));
-        System.out.println(nullProtectedlength.and(char0isT).test(null));
+//        System.out.println(lengthWord.and(char0isT).test("test"));
+//
+//        Predicate<String> nullProtectedlength = new Predicate<String>() {
+//            @Override
+//            public boolean test(String s) {
+//                return s.length() >= 4;
+//            }
+//
+//            @Override
+//            public Predicate<String> and(Predicate<? super String> other) {
+//                return x -> x == null ? false : test(x) && other.test(x);
+//            }
+//        };
+//
+//        System.out.println(nullProtectedlength.and(char0isT).test("test"));
+//        System.out.println(nullProtectedlength.and(char0isT).test(null));
 
 //        System.out.println(p1.and(Predicate.not(x -> x % 2 == 1)).test(8));
 
