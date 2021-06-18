@@ -15,10 +15,29 @@ public class PredicateHelper {
 //        result(x -> x > 2, 6);
 //        result(s -> s.charAt(0) == 'H', "Hello");
 //        result(y -> y >= 4.0, 3.9);
-        Predicate<Integer> p1 = x -> x > 7;
+//        Predicate<Integer> p1 = x -> x > 7;
 //        Predicate<Integer> p2 = Predicate.isEqual(5);
+        Predicate<String> lengthWord = x -> x.length() >= 4;
+        Predicate<String> char0isT = x -> x.charAt(0) == 't';
 
-        System.out.println(p1.and(Predicate.not(x -> x % 2 == 1)).test(8));
+        System.out.println(lengthWord.and(char0isT).test("test"));
+
+        Predicate<String> nullProtectedlength = new Predicate<String>() {
+            @Override
+            public boolean test(String s) {
+                return s.length() >= 4;
+            }
+
+            @Override
+            public Predicate<String> and(Predicate<? super String> other) {
+                return x -> x == null ? false : test(x) && other.test(x);
+            }
+        };
+
+        System.out.println(nullProtectedlength.and(char0isT).test("test"));
+        System.out.println(nullProtectedlength.and(char0isT).test(null));
+
+//        System.out.println(p1.and(Predicate.not(x -> x % 2 == 1)).test(8));
 
 //        if (p2.test(5)) {
 //            System.out.println("The Predicate is true");
