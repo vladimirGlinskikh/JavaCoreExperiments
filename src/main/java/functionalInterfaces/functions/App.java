@@ -8,7 +8,9 @@ public class App {
         Integer i = function.apply("101");
         System.out.println(i);
 
+        Function<Boolean, Integer> fbi = x -> x ? 1 : 0;
         Function<String, Boolean> fsb = Boolean::parseBoolean;
-        System.out.println(fsb.andThen(x -> x ? 1 : 0).apply("true"));
+//        System.out.println(fsb.andThen(x -> x ? 1 : 0).apply("true"));
+        System.out.println(fbi.compose(fsb).apply("true"));
     }
 }
