@@ -7,5 +7,8 @@ public class App {
         Function<String, Integer> function = Integer::parseInt;
         Integer i = function.apply("101");
         System.out.println(i);
+
+        Function<String, Boolean> fsb = Boolean::parseBoolean;
+        System.out.println(fsb.andThen(x -> x ? 1 : 0).apply("true"));
     }
 }
