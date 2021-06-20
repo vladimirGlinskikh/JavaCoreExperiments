@@ -19,6 +19,13 @@ public class App {
         ToLongFunction<Double> tl = Double::longValue;
         ToDoubleFunction<Integer> td = x -> (Integer.valueOf(x).doubleValue());
 
+        DoubleToIntFunction di = x -> (Double.valueOf(x)).intValue();
+        DoubleToLongFunction dl = x -> (Double.valueOf(x)).longValue();
+        IntToDoubleFunction id = x -> (Integer.valueOf(x)).doubleValue();
+        IntToLongFunction il = x -> (Integer.valueOf(x)).longValue();
+        LongToDoubleFunction ld = x -> (Long.valueOf(x)).doubleValue();
+        LongToIntFunction li = x -> (Long.valueOf(x)).intValue();
+
         System.out.println(i);
         System.out.println("-------------------------");
         System.out.println(fsb.andThen(x -> x ? 1 : 0).apply("true"));
@@ -32,5 +39,12 @@ public class App {
         System.out.println(ti.applyAsInt("5"));
         System.out.println(tl.applyAsLong(5.1));
         System.out.println(td.applyAsDouble(7));
+        System.out.println("--------------------------");
+        System.out.println(di.applyAsInt(4.1));
+        System.out.println(dl.applyAsLong(5.2));
+        System.out.println(id.applyAsDouble(6));
+        System.out.println(il.applyAsLong(7));
+        System.out.println(ld.applyAsDouble(8));
+        System.out.println(li.applyAsInt(9));
     }
 }
