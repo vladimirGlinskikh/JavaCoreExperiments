@@ -26,6 +26,13 @@ public class App {
         LongToDoubleFunction ld = x -> (Long.valueOf(x)).doubleValue();
         LongToIntFunction li = x -> (Long.valueOf(x)).intValue();
 
+        BiFunction<Integer, Character, String> biFunction = (x, z) -> {
+            if (Character.isUpperCase(z)) {
+                return (x % 2) == 0 ? "EVEN" : "ODD";
+            }
+            return (x % 2) == 0 ? "even" : "odd";
+        };
+
         System.out.println(i);
         System.out.println("-------------------------");
         System.out.println(fsb.andThen(x -> x ? 1 : 0).apply("true"));
@@ -46,5 +53,7 @@ public class App {
         System.out.println(il.applyAsLong(7));
         System.out.println(ld.applyAsDouble(8));
         System.out.println(li.applyAsInt(9));
+        System.out.println("----------------------------");
+        System.out.println(biFunction.apply(7, 'U'));
     }
 }
