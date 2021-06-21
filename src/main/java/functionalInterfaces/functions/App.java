@@ -33,6 +33,9 @@ public class App {
             return (x % 2) == 0 ? "even" : "odd";
         };
 
+        Function<String, Double> biFunction2 = x -> x.equalsIgnoreCase("even") ? 3.0 : 4.0;
+        Double d = biFunction.andThen(biFunction2).apply(4, 'U');
+
         System.out.println(i);
         System.out.println("-------------------------");
         System.out.println(fsb.andThen(x -> x ? 1 : 0).apply("true"));
@@ -54,6 +57,8 @@ public class App {
         System.out.println(ld.applyAsDouble(8));
         System.out.println(li.applyAsInt(9));
         System.out.println("----------------------------");
-        System.out.println(biFunction.apply(7, 'U'));
+        System.out.println(biFunction.apply(7, 'a'));
+        System.out.println("----------------------------");
+        System.out.println(d);
     }
 }
