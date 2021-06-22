@@ -36,6 +36,10 @@ public class App {
         Function<String, Double> biFunction2 = x -> x.equalsIgnoreCase("even") ? 3.0 : 4.0;
         Double d = biFunction.andThen(biFunction2).apply(4, 'U');
 
+        ToIntBiFunction<String, Double> tib = (x, z) -> Integer.parseInt(x) + (z).intValue();
+        ToLongBiFunction<Double, String> tlb = (x, z) -> x.longValue() + Long.parseLong(z);
+        ToDoubleBiFunction<Integer, Long> tdb = (x, z) -> (x).doubleValue() + (z).doubleValue();
+
         System.out.println(i);
         System.out.println("-------------------------");
         System.out.println(fsb.andThen(x -> x ? 1 : 0).apply("true"));
@@ -60,5 +64,9 @@ public class App {
         System.out.println(biFunction.apply(7, 'a'));
         System.out.println("----------------------------");
         System.out.println(d);
+        System.out.println("----------------------------");
+        System.out.println(tib.applyAsInt("5", 4.2));
+        System.out.println(tlb.applyAsLong(5.1, "6"));
+        System.out.println(tdb.applyAsDouble(7, 8L));
     }
 }
