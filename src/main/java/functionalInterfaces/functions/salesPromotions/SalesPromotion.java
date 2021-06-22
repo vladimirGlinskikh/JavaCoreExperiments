@@ -1,6 +1,7 @@
 package functionalInterfaces.functions.salesPromotions;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.function.BiFunction;
 
 public class SalesPromotion {
@@ -17,12 +18,12 @@ public class SalesPromotion {
                     "Tatiana Reginat, 7642349011")
     };
 
-    private static void matchCustomers(Customer customer, ArrayList<BiFunction<Customer, Integer, ? extends Record>> functions) {
-        for (int i = 0; i < functions.size(); ++i) {
+    private static void matchCustomers(Customer customer, List<BiFunction<Customer, Integer, ? extends Record>> functions) {
+        for (BiFunction<Customer, Integer, ? extends Record> function : functions) {
             Record record;
             int index = 0;
             do {
-                record = functions.get(i).apply(customer, index);
+                record = function.apply(customer, index);
                 if (record != null) {
                     System.out.println(record);
                     index = record.index + 1;
@@ -66,7 +67,7 @@ public class SalesPromotion {
             return friends;
         };
 
-        ArrayList<BiFunction<Customer, Integer, ? extends Record>> list = new ArrayList<>();
+        List<BiFunction<Customer, Integer, ? extends Record>> list = new ArrayList<>();
         list.add(fsport);
         list.add(fgpa);
         list.add(ffriends);
