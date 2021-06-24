@@ -1,9 +1,6 @@
 package functionalInterfaces.operators;
 
-import java.util.function.DoubleUnaryOperator;
-import java.util.function.IntUnaryOperator;
-import java.util.function.LongUnaryOperator;
-import java.util.function.UnaryOperator;
+import java.util.function.*;
 
 public class App {
     public static void main(String[] args) {
@@ -14,6 +11,10 @@ public class App {
         IntUnaryOperator iuo = x -> x + 5;
         LongUnaryOperator luo = x -> x / 3L;
         DoubleUnaryOperator duo = x -> x * 2.1;
+
+        BinaryOperator<String> concat1 = (x, y) -> x + y;
+        BinaryOperator<Integer> subtract = (x, y) -> x - y;
+        BinaryOperator<Long> multiply = (x, y) -> x * y;
 
         System.out.println(concat.apply("Function Java "));
         System.out.println(increment.apply(4));
@@ -31,5 +32,10 @@ public class App {
         System.out.println(iuo.andThen(x -> x * 2).applyAsInt(4));
         System.out.println(luo.compose(x -> x * 6).applyAsLong(4));
         System.out.println(duo.andThen(DoubleUnaryOperator.identity()).applyAsDouble(4.1));
+        System.out.println("------------------------ ");
+
+        System.out.println(concat1.apply("Binary", "Operator"));
+        System.out.println(subtract.apply(4, 1));
+        System.out.println(multiply.apply(4L, 3l));
     }
 }
