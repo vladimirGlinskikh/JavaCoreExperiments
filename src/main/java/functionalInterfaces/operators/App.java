@@ -16,6 +16,10 @@ public class App {
         BinaryOperator<Integer> subtract = (x, y) -> x - y;
         BinaryOperator<Long> multiply = (x, y) -> x * y;
 
+        IntBinaryOperator ibo = (x, y) -> x + y + 5;
+        LongBinaryOperator lbo = (x, y) -> (x + y) / 3L;
+        DoubleBinaryOperator dbo = (x, y) -> x * y * 0.5;
+
         System.out.println(concat.apply("Function Java "));
         System.out.println(increment.apply(4));
         System.out.println(decrement.apply(7L));
@@ -37,5 +41,10 @@ public class App {
         System.out.println(concat1.apply("Binary", "Operator"));
         System.out.println(subtract.apply(4, 1));
         System.out.println(multiply.apply(4L, 3l));
+        System.out.println("--------------------------");
+
+        System.out.println(ibo.applyAsInt(4, 2));
+        System.out.println(lbo.applyAsLong(9L, 3L));
+        System.out.println(dbo.applyAsDouble(4.0, 6.0));
     }
 }
