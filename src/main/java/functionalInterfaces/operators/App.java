@@ -13,7 +13,7 @@ public class App {
 
         IntUnaryOperator iuo = x -> x + 5;
         LongUnaryOperator luo = x -> x / 3L;
-        DoubleUnaryOperator duo = x -> x * 3.2;
+        DoubleUnaryOperator duo = x -> x * 2.1;
 
         System.out.println(concat.apply("Function Java "));
         System.out.println(increment.apply(4));
@@ -27,5 +27,9 @@ public class App {
         System.out.println(luo.applyAsLong(9L));
         System.out.println(duo.applyAsDouble(4.1));
         System.out.println("------------------------");
+
+        System.out.println(iuo.andThen(x -> x * 2).applyAsInt(4));
+        System.out.println(luo.compose(x -> x * 6).applyAsLong(4));
+        System.out.println(duo.andThen(DoubleUnaryOperator.identity()).applyAsDouble(4.1));
     }
 }
