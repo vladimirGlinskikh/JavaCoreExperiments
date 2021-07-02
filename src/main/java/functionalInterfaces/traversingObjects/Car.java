@@ -1,7 +1,6 @@
 package functionalInterfaces.traversingObjects;
 
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
 public class Car {
@@ -19,9 +18,10 @@ public class Car {
                 new Car("Chevrolet", "Vega"),
                 new Car("Hyundai", "Elantra")
         );
-        Iterator<Car> iterator = cars.iterator();
-        while (iterator.hasNext())
-            System.out.println(iterator.next());
+//        Iterator<Car> iterator = cars.iterator();
+//        while (iterator.hasNext())
+//            System.out.println(iterator.next());
+        cars.iterator().forEachRemaining(System.out::println);
     }
 
     @Override
