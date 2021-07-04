@@ -32,6 +32,9 @@ public class Car {
         Spliterator<Car> firstHalf = spliterator.trySplit();
         firstHalf.forEachRemaining(x -> System.out.println("In 1st half: " + x));
         spliterator.forEachRemaining(x -> System.out.println("In 2nd half: " + x));
+        System.out.println("----------------------");
+
+        cars.forEach(System.out::println);
     }
 
     @Override
