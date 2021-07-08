@@ -15,6 +15,21 @@ public class App {
 
         Comparator<Integer> byIntDifference = (x, y) -> x - y;
         System.out.println(byIntDifference.compare(100, 103));
+        System.out.println("-----------------");
+
+        Comparator<String> natural = Comparator.naturalOrder();
+        System.out.println(natural.compare("Javac", "Jivac"));
+        System.out.println("------------------");
+
+        Comparator<String> reversed = Comparator.reverseOrder();
+        System.out.println(reversed.compare("Java", "Jiva"));
+        System.out.println("-------------------");
+
+        System.out.println(Comparator.nullsFirst(byConsonants).compare("Java", null));
+        System.out.println(Comparator.nullsLast(byConsonants).compare("Java", null));
+        System.out.println("-------------------");
+
+        System.out.println(byConsonants.reversed().compare("Java", "Jivac"));
     }
 
     public static String removeVowels(String s) {
