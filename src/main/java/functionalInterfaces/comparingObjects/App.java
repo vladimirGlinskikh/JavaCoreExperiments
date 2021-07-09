@@ -2,6 +2,7 @@ package functionalInterfaces.comparingObjects;
 
 import java.util.Comparator;
 import java.util.function.Function;
+import java.util.function.ToDoubleFunction;
 
 public class App {
     public static void main(String[] args) {
@@ -35,7 +36,7 @@ public class App {
 
         Function<Student, Double> gpaKey = x -> x.gpa;
         Comparator<Student> byGpa = Comparator.comparing(gpaKey);
-        Student s1 = new Student("Vladimir", 100, 3.26);
+        Student s1 = new Student("Vladimir", 100, 3.39);
         Student s2 = new Student("Andrey", 103, 3.26);
         System.out.println(byGpa.compare(s1, s2));
         System.out.println("-------------------");
@@ -48,6 +49,10 @@ public class App {
 
         Comparator<Student> byName = Comparator.comparing(x -> x.name);
         System.out.println(byName.compare(s1, s2));
+        System.out.println("--------------------");
+
+        ToDoubleFunction<Student> gpaKey2 = x -> x.gpa;
+        System.out.println(Comparator.comparingDouble(gpaKey2).compare(s1, s2));
     }
 
     public static String removeVowels(String s) {
