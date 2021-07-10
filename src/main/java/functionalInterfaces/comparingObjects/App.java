@@ -53,6 +53,14 @@ public class App {
 
         ToDoubleFunction<Student> gpaKey2 = x -> x.gpa;
         System.out.println(Comparator.comparingDouble(gpaKey2).compare(s1, s2));
+        System.out.println("--------------------");
+
+        Comparator<Student> byName1 = Comparator.comparing(x -> x.name);
+        Comparator<Student> byId1 = Comparator.comparing(x -> x.id);
+        Comparator<Student> byGpa1 = Comparator.comparing(x -> x.gpa);
+        Student student1 = new Student("Vladimir", 1000, 3.45);
+        Student student2 = new Student("Vladimir", 1000, 3.44);
+        System.out.println(byName1.compare(student1, student2));
     }
 
     public static String removeVowels(String s) {
