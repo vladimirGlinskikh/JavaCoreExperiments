@@ -1,6 +1,8 @@
 package functionalInterfaces.comparingObjects;
 
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.Function;
 import java.util.function.ToDoubleFunction;
 
@@ -71,6 +73,21 @@ public class App {
         Student student7 = new Student("Roberto", 1009, 3.78);
         Student student8 = new Student("Roberto", 1010, 3.76);
         System.out.println(byName1.thenComparingDouble(x -> x.gpa).compare(student7, student8));
+        System.out.println("-------------------------");
+
+        List<Student> students = Arrays.asList(
+                new Student("Vladimir", 1234, 3.54),
+                new Student("Andrey", 1235, 4.54),
+                new Student("Vasiliy", 1236, 3.52),
+                new Student("Andrey", 1237, 3.59),
+                new Student("Oleg", 1238, 5.54),
+                new Student("Nikolay", 1239, 6.54)
+        );
+
+        Comparator<Student> byGpaCeil = Comparator.comparing(x -> x.gpa,
+                (x, y) -> (int) (Math.ceil(x) - Math.ceil(y)));
+        students.sort(byGpaCeil);
+        students.forEach(x -> System.out.println(x));
     }
 
     public static String removeVowels(String s) {
