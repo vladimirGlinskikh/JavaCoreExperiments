@@ -61,6 +61,16 @@ public class App {
         Student student1 = new Student("Vladimir", 1000, 3.45);
         Student student2 = new Student("Vladimir", 1000, 3.44);
         System.out.println(byName1.compare(student1, student2));
+        System.out.println("-----------------------");
+
+        Student student5 = new Student("Katy", 1008, 3.56);
+        Student student6 = new Student("Vladimir", 1009, 3.56);
+        System.out.println(byGpa1.thenComparing(x -> x.id).compare(student5, student6));
+        System.out.println("------------------------");
+
+        Student student7 = new Student("Roberto", 1009, 3.78);
+        Student student8 = new Student("Roberto", 1010, 3.76);
+        System.out.println(byName1.thenComparingDouble(x -> x.gpa).compare(student7, student8));
     }
 
     public static String removeVowels(String s) {
