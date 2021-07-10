@@ -1,8 +1,6 @@
 package functionalInterfaces.comparingObjects;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.ToDoubleFunction;
 
@@ -104,6 +102,23 @@ public class App {
         Arrays.sort(students1, byGpaCeil1.thenComparing(x -> x.id).thenComparing(x -> x.name));
         for (Student s : students1)
             System.out.println(s);
+        System.out.println("-------------------------");
+
+        Comparator<String> byConsonats = (x, y) ->
+                removeVowels(x).compareTo(removeVowels(y));
+        TreeMap<String, String> pets = new TreeMap<>(byConsonats);
+        pets.put("gerbil", "small cute rodents");
+        pets.put("guinea pig", "rodents, not pigs");
+        pets.put("cat", "have nine lives");
+        pets.put("chicken", "more populous than people");
+        pets.put("parrots", "smart birds");
+        pets.forEach((x, y) -> System.out.println(x + ", " + y));
+
+        Comparator<Map.Entry<String, String>> cmap =
+                Map.Entry.comparingByKey();
+        Map.Entry<String, String> cat = pets.ceilingEntry("cat");
+        Map.Entry<String, String> chicken = pets.ceilingEntry("chicken");
+        System.out.println(cmap.compare(cat, chicken));
     }
 
     public static String removeVowels(String s) {
