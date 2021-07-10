@@ -88,6 +88,22 @@ public class App {
                 (x, y) -> (int) (Math.ceil(x) - Math.ceil(y)));
         students.sort(byGpaCeil);
         students.forEach(x -> System.out.println(x));
+        System.out.println("-------------------------");
+
+        Student[] students1 = {
+                new Student("Vladimir", 1234, 3.54),
+                new Student("Andrey", 1235, 4.54),
+                new Student("Vasiliy", 1236, 3.52),
+                new Student("Andrey", 1237, 3.59),
+                new Student("Oleg", 1238, 5.54),
+                new Student("Nikolay", 1239, 6.54)
+        };
+
+        Comparator<Student> byGpaCeil1 = Comparator.comparing(x -> x.gpa,
+                (x, y) -> (int) (Math.ceil(x) - Math.ceil(y)));
+        Arrays.sort(students1, byGpaCeil1.thenComparing(x -> x.id).thenComparing(x -> x.name));
+        for (Student s : students1)
+            System.out.println(s);
     }
 
     public static String removeVowels(String s) {
