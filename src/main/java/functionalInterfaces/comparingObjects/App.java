@@ -1,6 +1,7 @@
 package functionalInterfaces.comparingObjects;
 
 import java.util.*;
+import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.ToDoubleFunction;
 
@@ -119,6 +120,13 @@ public class App {
         Map.Entry<String, String> cat = pets.ceilingEntry("cat");
         Map.Entry<String, String> chicken = pets.ceilingEntry("chicken");
         System.out.println(cmap.compare(cat, chicken));
+        System.out.println("-----------------------");
+
+        Comparator<Integer> absCompare = Comparator.comparing(x -> Math.abs(x));
+        BinaryOperator<Integer> bigInt = BinaryOperator.maxBy(absCompare);
+        BinaryOperator<Integer> smallInt = BinaryOperator.minBy(absCompare);
+        System.out.println(bigInt.apply(2, -5));
+        System.out.println(smallInt.apply(2, -5));
     }
 
     public static String removeVowels(String s) {
