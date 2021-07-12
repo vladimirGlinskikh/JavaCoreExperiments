@@ -65,10 +65,15 @@ public class App {
             System.out.println("Enter a string:");
             return Optional.of((new Scanner(System.in)).nextLine());
         };
+//
+//        String s = null;
+//        Optional<String> os = Optional.ofNullable(s).or(supplier);
+//        if (os.isPresent())
+//            System.out.println(os.get());
 
         String s = null;
-        Optional<String> os = Optional.ofNullable(s).or(supplier);
-        if (os.isPresent())
-            System.out.println(os.get());
+        Optional.ofNullable(s)
+                .or(supplier)
+                .ifPresent(System.out::println);
     }
 }
