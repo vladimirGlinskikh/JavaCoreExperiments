@@ -3,6 +3,7 @@ package functionalInterfaces.optionals;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Scanner;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class App {
@@ -71,9 +72,23 @@ public class App {
 //        if (os.isPresent())
 //            System.out.println(os.get());
 
-        String s = null;
-        Optional.ofNullable(s)
-                .or(supplier)
+//        String s = null;
+//        Optional.ofNullable(s)
+//                .or(supplier)
+//                .ifPresent(System.out::println);
+
+//        String t = null;
+//        Optional.ofNullable(t)
+//                .filter(x -> x.length() > 2);
+//        Optional.of("Java")
+//                .filter(x -> x.charAt(0) == 'J')
+//                .filter(x -> x.length() > 2)
+//                .filter(x -> x.charAt(1) == 'a')
+//                .ifPresent(System.out::println);
+
+        Predicate<String> predicate = x -> x.charAt(0) == 'i';
+        Optional.of("Java")
+                .filter(predicate.or(x -> x.charAt(0) == 'J'))
                 .ifPresent(System.out::println);
     }
 }
