@@ -28,8 +28,8 @@ public class App {
 //        if (imNull.isEmpty())
 //            System.out.println("Empty");
 
-        Optional<String> optional = Optional.ofNullable(null);
-        Optional<String> optional1 = Optional.ofNullable("one");
+//        Optional<String> optional = Optional.ofNullable(null);
+//        Optional<String> optional1 = Optional.ofNullable("one");
 //        try {
 //            optional.get();
 //        } catch (NoSuchElementException e) {
@@ -62,10 +62,10 @@ public class App {
 //            System.err.println(e.getMessage());
 //        }
 
-        Supplier<Optional<String>> supplier = () -> {
-            System.out.println("Enter a string:");
-            return Optional.of((new Scanner(System.in)).nextLine());
-        };
+//        Supplier<Optional<String>> supplier = () -> {
+//            System.out.println("Enter a string:");
+//            return Optional.of((new Scanner(System.in)).nextLine());
+//        };
 //
 //        String s = null;
 //        Optional<String> os = Optional.ofNullable(s).or(supplier);
@@ -86,9 +86,35 @@ public class App {
 //                .filter(x -> x.charAt(1) == 'a')
 //                .ifPresent(System.out::println);
 
-        Predicate<String> predicate = x -> x.charAt(0) == 'i';
-        Optional.of("Java")
-                .filter(predicate.or(x -> x.charAt(0) == 'J'))
-                .ifPresent(System.out::println);
+//        Predicate<String> predicate = x -> x.charAt(0) == 'i';
+//        Optional.of("Java")
+//                .filter(predicate.or(x -> x.charAt(0) == 'J'))
+//                .ifPresent(System.out::println);
+
+        Optional.of("5")
+                .map(x -> Integer.parseInt(x))
+                .filter(x -> x > 3)
+                .filter(x -> (x % 2) != 0)
+                .ifPresent(x -> System.out.println(x));
+
+        Optional<Integer> optional = Optional.of(3);
+        optional.ifPresent(x -> ++x);
+        optional.ifPresent(x -> System.out.println(x));
+
+        Optional.of(2)
+                .map(x -> ++x)
+                .ifPresent(x -> System.out.println(x));
+
+        Optional.of("5")
+                .flatMap(x -> Optional.of(Integer.parseInt(x)))
+                .ifPresent(x -> System.out.println(x));
+
+        Optional.of(new Resource())
+                .filter(x -> x.count > 0)
+                .map(x -> new Resource())
+                .filter(x -> x.count > 0)
+                .map(x -> new Resource())
+                .filter(x -> x.count > 0)
+                .map(x -> new Resource());
     }
 }
