@@ -1,5 +1,7 @@
 package functionalInterfaces.streams;
 
+import functionalInterfaces.comparingObjects.Student;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -47,9 +49,27 @@ public class App {
 //                        removeVowels(x).compareTo(removeVowels(y)))
 //                .ifPresent(System.out::println);
 
-        Stream.of("one", "two", "three", "four", "five")
-                .max((x, y) ->
-                        removeVowels(x).compareTo(removeVowels(y)))
-                .ifPresent(System.out::println);
+//        Stream.of("one", "two", "three", "four", "five")
+//                .max((x, y) ->
+//                        removeVowels(x).compareTo(removeVowels(y)))
+//                .ifPresent(System.out::println);
+
+//        Stream.of(new Class("Biology",
+//                        new Student("Joe", 1001, 3.81),
+//                        new Student("Mary", 1002, 3.91)),
+//                new Class("Physics",
+//                        new Student("Kalpana", 1003, 3.61),
+//                        new Student("Javier", 1004, 3.71)))
+//                .flatMap(x -> x.students.stream())
+//                .forEach(System.out::println);
+
+        Stream.of(new Class("Biology",
+                        new Student("Joe", 1001, 3.81),
+                        new Student("Mary", 1002, 3.91)),
+                new Class("Physics",
+                        new Student("Kalpana", 1003, 3.61),
+                        new Student("Javier", 1004, 3.71)))
+                .map(x -> x.students)
+                .forEach(System.out::println);
     }
 }
