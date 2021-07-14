@@ -37,9 +37,19 @@ public class App {
 //                .sorted()
 //                .forEach(System.out::println);
 
-        Stream.of("a", "b", "d", "c")
-                .sorted((x, y) ->
+//        Stream.of("a", "b", "d", "c")
+//                .sorted((x, y) ->
+//                        removeVowels(x).compareTo(removeVowels(y)))
+//                .forEach(x -> System.out.println(x));
+
+//        Stream.of("one", "two", "three", "four", "five")
+//                .min((x, y) ->
+//                        removeVowels(x).compareTo(removeVowels(y)))
+//                .ifPresent(System.out::println);
+
+        Stream.of("one", "two", "three", "four", "five")
+                .max((x, y) ->
                         removeVowels(x).compareTo(removeVowels(y)))
-                .forEach(x -> System.out.println(x));
+                .ifPresent(System.out::println);
     }
 }
