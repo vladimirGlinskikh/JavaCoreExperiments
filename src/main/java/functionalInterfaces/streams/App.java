@@ -7,6 +7,8 @@ import java.util.Random;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
+import static functionalInterfaces.comparingObjects.App.removeVowels;
+
 public class App {
     public static void main(String[] args) {
 //        Stream<Integer> tenRandomNumbers =
@@ -27,8 +29,17 @@ public class App {
 //                .filter(x -> x.equals("GREEN"))
 //                .forEach(System.out::println);
 
-        Optional.of("BLUE")
-                .stream()
-                .forEach(System.out::println);
+//        Optional.of("BLUE")
+//                .stream()
+//                .forEach(System.out::println);
+
+//        Stream.of("One", "Two", "Three", "Four")
+//                .sorted()
+//                .forEach(System.out::println);
+
+        Stream.of("a", "b", "d", "c")
+                .sorted((x, y) ->
+                        removeVowels(x).compareTo(removeVowels(y)))
+                .forEach(x -> System.out.println(x));
     }
 }
