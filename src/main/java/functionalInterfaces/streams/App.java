@@ -1,5 +1,8 @@
 package functionalInterfaces.streams;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
@@ -14,9 +17,18 @@ public class App {
 //                .filter(x -> x.equals("RED"))
 //                .forEach(System.out::println);
 
-        Predicate<String> isRed = x -> x.equals("RED");
-        Stream.of("RED", "GREEN", "BLUE", "RED")
-                .filter(isRed.or(x -> x.indexOf("L") > -1))
+//        Predicate<String> isRed = x -> x.equals("RED");
+//        Stream.of("RED", "GREEN", "BLUE", "RED")
+//                .filter(isRed.or(x -> x.indexOf("L") > -1))
+//                .forEach(System.out::println);
+
+//        List<String> list = Arrays.asList("RED", "BLUE", "GREEN");
+//        list.stream()
+//                .filter(x -> x.equals("GREEN"))
+//                .forEach(System.out::println);
+
+        Optional.of("BLUE")
+                .stream()
                 .forEach(System.out::println);
     }
 }
