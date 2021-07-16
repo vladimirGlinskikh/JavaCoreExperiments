@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
@@ -63,13 +65,25 @@ public class App {
 //                .flatMap(x -> x.students.stream())
 //                .forEach(System.out::println);
 
-        Stream.of(new Class("Biology",
-                        new Student("Joe", 1001, 3.81),
-                        new Student("Mary", 1002, 3.91)),
-                new Class("Physics",
-                        new Student("Kalpana", 1003, 3.61),
-                        new Student("Javier", 1004, 3.71)))
-                .map(x -> x.students)
-                .forEach(System.out::println);
+//        Stream.of(new Class("Biology",
+//                        new Student("Joe", 1001, 3.81),
+//                        new Student("Mary", 1002, 3.91)),
+//                new Class("Physics",
+//                        new Student("Kalpana", 1003, 3.61),
+//                        new Student("Javier", 1004, 3.71)))
+//                .map(x -> x.students)
+//                .forEach(System.out::println);
+
+//        Stream.of(1, 2, 3, 4, 5)
+//                .reduce((x, y) -> x * y)
+//                .ifPresent(System.out::println);
+
+        Stream<TwoInts> two = Stream.of(new TwoInts(1, 2), new TwoInts(8, 12));
+        BiFunction<Integer, TwoInts, Integer> accumulator = (x, y) -> x + y.i2;
+        BinaryOperator<Integer> combiner = (x, y) -> x += y;
+        Integer j = two.reduce(0, accumulator, combiner);
+        System.out.println(j);
+
+
     }
 }
