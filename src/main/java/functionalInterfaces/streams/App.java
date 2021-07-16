@@ -102,8 +102,20 @@ public class App {
 //                .collect(Collector.of(supp, acc, comb1))
 //                .forEach(System.out::println);
 
-        Stream.of('1', 'a', 'b', '2')
-                .collect(Collectors.toList())
-                .forEach(System.out::println);
+//        Stream.of('1', 'a', 'b', '2')
+//                .collect(Collectors.toList())
+//                .forEach(System.out::println);
+
+        Stream.Builder<String> bld = Stream.builder();
+        bld.accept("RED");
+        bld.accept("GREEN");
+        bld.accept("BLUE");
+        Stream<String> st = bld.build();
+        try {
+            bld.accept("YELLOW");
+        } catch (IllegalStateException e) {
+            System.err.println("IllegalStateException");
+        }
+        st.forEach(System.out::println);
     }
 }
