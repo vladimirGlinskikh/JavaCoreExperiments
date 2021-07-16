@@ -106,16 +106,21 @@ public class App {
 //                .collect(Collectors.toList())
 //                .forEach(System.out::println);
 
-        Stream.Builder<String> bld = Stream.builder();
-        bld.accept("RED");
-        bld.accept("GREEN");
-        bld.accept("BLUE");
-        Stream<String> st = bld.build();
-        try {
-            bld.accept("YELLOW");
-        } catch (IllegalStateException e) {
-            System.err.println("IllegalStateException");
-        }
-        st.forEach(System.out::println);
+//        Stream.Builder<String> bld = Stream.builder();
+//        bld.accept("RED");
+//        bld.accept("GREEN");
+//        bld.accept("BLUE");
+//        Stream<String> st = bld.build();
+//        try {
+//            bld.accept("YELLOW");
+//        } catch (IllegalStateException e) {
+//            System.err.println("IllegalStateException");
+//        }
+//        st.forEach(System.out::println);
+
+        Stream.of(1, 2, 3, 4, 5)
+                .peek(System.out::println)
+                .reduce((x, y) -> x += y)
+                .ifPresent(System.out::println);
     }
 }
