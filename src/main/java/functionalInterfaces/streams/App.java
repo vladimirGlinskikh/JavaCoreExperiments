@@ -2,13 +2,9 @@ package functionalInterfaces.streams;
 
 import functionalInterfaces.comparingObjects.Student;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
-import java.util.function.BiFunction;
-import java.util.function.BinaryOperator;
-import java.util.function.Predicate;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.Collector;
 import java.util.stream.Stream;
 
 import static functionalInterfaces.comparingObjects.App.removeVowels;
@@ -78,12 +74,31 @@ public class App {
 //                .reduce((x, y) -> x * y)
 //                .ifPresent(System.out::println);
 
-        Stream<TwoInts> two = Stream.of(new TwoInts(1, 2), new TwoInts(8, 12));
-        BiFunction<Integer, TwoInts, Integer> accumulator = (x, y) -> x + y.i2;
-        BinaryOperator<Integer> combiner = (x, y) -> x += y;
-        Integer j = two.reduce(0, accumulator, combiner);
-        System.out.println(j);
+//        Stream<TwoInts> two = Stream.of(new TwoInts(1, 2), new TwoInts(8, 12));
+//        BiFunction<Integer, TwoInts, Integer> accumulator = (x, y) -> x + y.i2;
+//        BinaryOperator<Integer> combiner = (x, y) -> x += y;
+//        Integer j = two.reduce(0, accumulator, combiner);
+//        System.out.println(j);
 
+        BiConsumer<List<Character>, Character> acc = (x, y) -> {
+            System.out.print("acc: x = " + x + " y = " + y + " result = ");
+            if (Character.isAlphabetic(y))
+                x.add(0, y);
+            else
+                x.add(y);
+            x.forEach(z -> System.out.print(z));
+            System.out.println();
+        };
 
+        BinaryOperator<List<Character>> comb1 = (x, y) -> {
+            x.addAll(y);
+            return x;
+        };
+
+        Supplier<List<Character>> supp = () -> new ArrayList<>();
+
+        Stream.of('1', 'a', 'b', '2')
+                .collect(Collector.of(supp, acc, comb1))
+                .forEach(System.out::println);
     }
 }
