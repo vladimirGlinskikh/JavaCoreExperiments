@@ -5,6 +5,7 @@ import functionalInterfaces.comparingObjects.Student;
 import java.util.*;
 import java.util.function.*;
 import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static functionalInterfaces.comparingObjects.App.removeVowels;
@@ -80,25 +81,29 @@ public class App {
 //        Integer j = two.reduce(0, accumulator, combiner);
 //        System.out.println(j);
 
-        BiConsumer<List<Character>, Character> acc = (x, y) -> {
-            System.out.print("acc: x = " + x + " y = " + y + " result = ");
-            if (Character.isAlphabetic(y))
-                x.add(0, y);
-            else
-                x.add(y);
-            x.forEach(z -> System.out.print(z));
-            System.out.println();
-        };
-
-        BinaryOperator<List<Character>> comb1 = (x, y) -> {
-            x.addAll(y);
-            return x;
-        };
-
-        Supplier<List<Character>> supp = () -> new ArrayList<>();
+//        BiConsumer<List<Character>, Character> acc = (x, y) -> {
+//            System.out.print("acc: x = " + x + " y = " + y + " result = ");
+//            if (Character.isAlphabetic(y))
+//                x.add(0, y);
+//            else
+//                x.add(y);
+//            x.forEach(z -> System.out.print(z));
+//            System.out.println();
+//        };
+//
+//        BinaryOperator<List<Character>> comb1 = (x, y) -> {
+//            x.addAll(y);
+//            return x;
+//        };
+//
+//        Supplier<List<Character>> supp = () -> new ArrayList<>();
+//
+//        Stream.of('1', 'a', 'b', '2')
+//                .collect(Collector.of(supp, acc, comb1))
+//                .forEach(System.out::println);
 
         Stream.of('1', 'a', 'b', '2')
-                .collect(Collector.of(supp, acc, comb1))
+                .collect(Collectors.toList())
                 .forEach(System.out::println);
     }
 }
