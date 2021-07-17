@@ -4,9 +4,7 @@ import functionalInterfaces.comparingObjects.Student;
 
 import java.util.*;
 import java.util.function.*;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.stream.*;
 
 import static functionalInterfaces.comparingObjects.App.removeVowels;
 
@@ -118,9 +116,30 @@ public class App {
 //        }
 //        st.forEach(System.out::println);
 
-        Stream.of(1, 2, 3, 4, 5)
-                .peek(System.out::println)
-                .reduce((x, y) -> x += y)
+//        Stream.of(1, 2, 3, 4, 5)
+//                .peek(System.out::println)
+//                .reduce((x, y) -> x += y)
+//                .ifPresent(System.out::println);
+
+        IntStream ints =
+                Stream.of(new Car("Buick", "Regal", 25),
+                        new Car("Hyundai", "Elantra", 27),
+                        new Car("Buick", "Skylark", 26),
+                        new Car("Hyundai", "Accent", 30))
+                        .mapToInt(x -> x.mpg);
+        ints.max()
                 .ifPresent(System.out::println);
+
+        LongStream.of(1, 2, 3, 4, 5)
+                .min()
+                .ifPresent(System.out::println);
+
+        DoubleStream.of(1.2, 2.2, 3.3, 4.4)
+                .average()
+                .ifPresent(System.out::println);
+
+        int sum = IntStream.of(1, 2, 3, 4, 5)
+                .sum();
+        System.out.println(sum);
     }
 }
