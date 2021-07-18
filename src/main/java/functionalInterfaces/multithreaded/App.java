@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
@@ -34,9 +36,23 @@ public class App {
 //            System.err.println(e.getClass());
 //        }
 
-        String s = null;
-        Optional.ofNullable(s)
-                .ifPresentOrElse(System.out::println,
-                        () -> System.out.println("empty"));
+//        String s = null;
+//        Optional.ofNullable(s)
+//                .ifPresentOrElse(System.out::println,
+//                        () -> System.out.println("empty"));
+
+        Callable<Integer> callable = () -> (new Random()).nextInt(100);
+        Runnable runnable = () -> System.out.println("Runnable");
+        FutureTask<Integer> fc = new FutureTask<>(callable);
+        FutureTask<Integer> fr = new FutureTask<>(runnable, -1);
+        fc.run();
+        fr.run();
+        try {
+            int i = fc.get();
+            int j = fr.get();
+            System.out.println(i + " " + j);
+        } catch (InterruptedException | ExecutionException e) {
+
+        }
     }
 }
