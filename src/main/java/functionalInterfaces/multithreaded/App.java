@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.Callable;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 import java.util.function.Consumer;
@@ -41,18 +42,39 @@ public class App {
 //                .ifPresentOrElse(System.out::println,
 //                        () -> System.out.println("empty"));
 
-        Callable<Integer> callable = () -> (new Random()).nextInt(100);
-        Runnable runnable = () -> System.out.println("Runnable");
-        FutureTask<Integer> fc = new FutureTask<>(callable);
-        FutureTask<Integer> fr = new FutureTask<>(runnable, -1);
-        fc.run();
-        fr.run();
-        try {
-            int i = fc.get();
-            int j = fr.get();
-            System.out.println(i + " " + j);
-        } catch (InterruptedException | ExecutionException e) {
+//        Callable<Integer> callable = () -> (new Random()).nextInt(100);
+//        Runnable runnable = () -> System.out.println("Runnable");
+//        FutureTask<Integer> fc = new FutureTask<>(callable);
+//        FutureTask<Integer> fr = new FutureTask<>(runnable, -1);
+//        fc.run();
+//        fr.run();
+//        try {
+//            int i = fc.get();
+//            int j = fr.get();
+//            System.out.println(i + " " + j);
+//        } catch (InterruptedException | ExecutionException e) {
+//
+//        }
 
-        }
+//        try {
+//            System.out.println(
+//                    CompletableFuture
+//                            .completedFuture("RED")
+//                            .get());
+//        } catch (InterruptedException | ExecutionException e) {
+//
+//        }
+
+//        System.out.println(
+//                CompletableFuture
+//                        .completedFuture("GREEN")
+//                        .join());
+
+        CompletableFuture<Integer> cf = CompletableFuture.supplyAsync(() -> {
+            System.out.println("EXECUTING THE FUTURE");
+            return 5;
+        });
+        System.out.println("NOT EXECUTED YET");
+        System.out.println(cf.join());
     }
 }
