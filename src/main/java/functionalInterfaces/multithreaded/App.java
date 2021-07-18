@@ -70,11 +70,22 @@ public class App {
 //                        .completedFuture("GREEN")
 //                        .join());
 
-        CompletableFuture<Integer> cf = CompletableFuture.supplyAsync(() -> {
-            System.out.println("EXECUTING THE FUTURE");
-            return 5;
-        });
-        System.out.println("NOT EXECUTED YET");
-        System.out.println(cf.join());
+//        CompletableFuture<Integer> cf = CompletableFuture.supplyAsync(() -> {
+//            System.out.println("EXECUTING THE FUTURE");
+//            return 5;
+//        });
+//        System.out.println("NOT EXECUTED YET");
+//        System.out.println(cf.join());
+
+        CompletableFuture<Integer> completableFuture = CompletableFuture
+                .supplyAsync(() -> "3")
+                .thenApply(x -> Integer.parseInt(x))
+                .thenApply(x -> ++x);
+        System.out.println(completableFuture.join());
+
+        CompletableFuture
+                .supplyAsync(() -> "RED")
+                .thenApply(x -> x.equals("RED") ? "GREEN" : "YELLOW")
+                .thenAccept(x -> System.out.println(x));
     }
 }
