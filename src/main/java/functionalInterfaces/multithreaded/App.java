@@ -2,6 +2,7 @@ package functionalInterfaces.multithreaded;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.Callable;
 import java.util.function.Consumer;
@@ -32,5 +33,10 @@ public class App {
 //        } catch (Exception e) {
 //            System.err.println(e.getClass());
 //        }
+
+        String s = null;
+        Optional.ofNullable(s)
+                .ifPresentOrElse(System.out::println,
+                        () -> System.out.println("empty"));
     }
 }
