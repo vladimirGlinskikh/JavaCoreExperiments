@@ -102,11 +102,20 @@ public class App {
             return 5;
         };
 
-        ExecutorService executorService = Executors.newCachedThreadPool();
-        CompletableFuture<Integer> completableFuture = CompletableFuture.supplyAsync(s1, executorService);
-        CompletableFuture<Integer> completableFuture1 = CompletableFuture.supplyAsync(s2, executorService);
+//        ExecutorService executorService = Executors.newCachedThreadPool();
+//        CompletableFuture<Integer> completableFuture = CompletableFuture.supplyAsync(s1, executorService);
+//        CompletableFuture<Integer> completableFuture1 = CompletableFuture.supplyAsync(s2, executorService);
+//
+//        CompletableFuture<Void> completableFuture2 = completableFuture.acceptEitherAsync(completableFuture1,
+//                x -> System.out.println(x), executorService);
 
-        CompletableFuture<Void> completableFuture2 = completableFuture.acceptEitherAsync(completableFuture1,
-                x -> System.out.println(x), executorService);
+        CompletableFuture<Integer> completableFuture =
+                CompletableFuture.supplyAsync(s1);
+        CompletableFuture<String> completableFuture1 = completableFuture.thenCompose(x -> {
+            CompletableFuture<String> c = new CompletableFuture<>();
+            c.complete("Java" + Integer.toString(x));
+            return c;
+        });
+        System.out.println(completableFuture1.join());
     }
 }
