@@ -86,21 +86,21 @@ public class App {
 //                .thenApply(x -> x.equals("RED") ? "GREEN" : "YELLOW")
 //                .thenAccept(x -> System.out.println(x));
 
-        Supplier<Integer> s1 = () -> {
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-            }
-            return 4;
-        };
-
-        Supplier<Integer> s2 = () -> {
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-            }
-            return 5;
-        };
+//        Supplier<Integer> s1 = () -> {
+//            try {
+//                Thread.sleep(5000);
+//            } catch (InterruptedException e) {
+//            }
+//            return 4;
+//        };
+//
+//        Supplier<Integer> s2 = () -> {
+//            try {
+//                Thread.sleep(2000);
+//            } catch (InterruptedException e) {
+//            }
+//            return 5;
+//        };
 
 //        ExecutorService executorService = Executors.newCachedThreadPool();
 //        CompletableFuture<Integer> completableFuture = CompletableFuture.supplyAsync(s1, executorService);
@@ -109,13 +109,30 @@ public class App {
 //        CompletableFuture<Void> completableFuture2 = completableFuture.acceptEitherAsync(completableFuture1,
 //                x -> System.out.println(x), executorService);
 
-        CompletableFuture<Integer> completableFuture =
-                CompletableFuture.supplyAsync(s1);
-        CompletableFuture<String> completableFuture1 = completableFuture.thenCompose(x -> {
-            CompletableFuture<String> c = new CompletableFuture<>();
-            c.complete("Java" + Integer.toString(x));
-            return c;
-        });
-        System.out.println(completableFuture1.join());
+//        CompletableFuture<Integer> completableFuture =
+//                CompletableFuture.supplyAsync(s1);
+//        CompletableFuture<String> completableFuture1 = completableFuture.thenCompose(x -> {
+//            CompletableFuture<String> c = new CompletableFuture<>();
+//            c.complete("Java" + Integer.toString(x));
+//            return c;
+//        });
+//        System.out.println(completableFuture1.join());
+
+        Supplier<Integer> s = () -> {
+            try {
+                Thread.sleep(10_000);
+            } catch (InterruptedException e) {
+
+            }
+            return 5;
+        };
+        CompletableFuture<Integer> cf1 = CompletableFuture.supplyAsync(s);
+        if (cf1.cancel(true))
+            System.out.println("Future cf1 cancelled.");
+        try {
+            System.out.println(cf1.join());
+        } catch (CancellationException e) {
+            System.err.println("Cannot join cancelled future.");
+        }
     }
 }
