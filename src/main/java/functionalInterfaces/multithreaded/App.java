@@ -4,11 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Optional;
 import java.util.Random;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
+import java.util.concurrent.*;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 public class App {
@@ -77,15 +75,38 @@ public class App {
 //        System.out.println("NOT EXECUTED YET");
 //        System.out.println(cf.join());
 
-        CompletableFuture<Integer> completableFuture = CompletableFuture
-                .supplyAsync(() -> "3")
-                .thenApply(x -> Integer.parseInt(x))
-                .thenApply(x -> ++x);
-        System.out.println(completableFuture.join());
+//        CompletableFuture<Integer> completableFuture = CompletableFuture
+//                .supplyAsync(() -> "3")
+//                .thenApply(x -> Integer.parseInt(x))
+//                .thenApply(x -> ++x);
+//        System.out.println(completableFuture.join());
+//
+//        CompletableFuture
+//                .supplyAsync(() -> "RED")
+//                .thenApply(x -> x.equals("RED") ? "GREEN" : "YELLOW")
+//                .thenAccept(x -> System.out.println(x));
 
-        CompletableFuture
-                .supplyAsync(() -> "RED")
-                .thenApply(x -> x.equals("RED") ? "GREEN" : "YELLOW")
-                .thenAccept(x -> System.out.println(x));
+        Supplier<Integer> s1 = () -> {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+            }
+            return 4;
+        };
+
+        Supplier<Integer> s2 = () -> {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+            }
+            return 5;
+        };
+
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        CompletableFuture<Integer> completableFuture = CompletableFuture.supplyAsync(s1, executorService);
+        CompletableFuture<Integer> completableFuture1 = CompletableFuture.supplyAsync(s2, executorService);
+
+        CompletableFuture<Void> completableFuture2 = completableFuture.acceptEitherAsync(completableFuture1,
+                x -> System.out.println(x), executorService);
     }
 }
