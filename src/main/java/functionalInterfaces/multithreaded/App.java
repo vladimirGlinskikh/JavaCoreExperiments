@@ -118,21 +118,30 @@ public class App {
 //        });
 //        System.out.println(completableFuture1.join());
 
-        Supplier<Integer> s = () -> {
-            try {
-                Thread.sleep(10_000);
-            } catch (InterruptedException e) {
+//        Supplier<Integer> s = () -> {
+//            try {
+//                Thread.sleep(10_000);
+//            } catch (InterruptedException e) {
+//
+//            }
+//            return 5;
+//        };
+//        CompletableFuture<Integer> cf1 = CompletableFuture.supplyAsync(s);
+//        if (cf1.cancel(true))
+//            System.out.println("Future cf1 cancelled.");
+//        try {
+//            System.out.println(cf1.join());
+//        } catch (CancellationException e) {
+//            System.err.println("Cannot join cancelled future.");
+//        }
 
-            }
-            return 5;
+        Supplier y = () -> {
+            int[] a = {1, 2, 3, 4, 5};
+            return a[6];
         };
-        CompletableFuture<Integer> cf1 = CompletableFuture.supplyAsync(s);
-        if (cf1.cancel(true))
-            System.out.println("Future cf1 cancelled.");
-        try {
-            System.out.println(cf1.join());
-        } catch (CancellationException e) {
-            System.err.println("Cannot join cancelled future.");
-        }
+        CompletableFuture
+                .supplyAsync(y)
+                .exceptionally(x -> 0)
+                .thenAccept(System.out::println);
     }
 }
