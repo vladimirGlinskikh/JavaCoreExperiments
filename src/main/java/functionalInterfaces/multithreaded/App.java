@@ -2,6 +2,8 @@ package functionalInterfaces.multithreaded;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.*;
@@ -135,13 +137,13 @@ public class App {
 //            System.err.println("Cannot join cancelled future.");
 //        }
 
-        Supplier y = () -> {
-            int[] a = {1, 2, 3, 4, 5};
-            return a[6];
-        };
-        CompletableFuture
-                .supplyAsync(y)
-                .exceptionally(x -> 0)
-                .thenAccept(System.out::println);
+//        Supplier y = () -> {
+//            int[] a = {1, 2, 3, 4, 5};
+//            return a[6];
+//        };
+//        CompletableFuture
+//                .supplyAsync(y)
+//                .exceptionally(x -> 0)
+//                .thenAccept(System.out::println);
     }
 }
