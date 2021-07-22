@@ -28,11 +28,10 @@ public class App {
         return result;
     }
 
-    public static List<Apple> filterApples(List<Apple> inventory, Color color, int weight, boolean flag) {
+    public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate predicate) {
         List<Apple> result = new ArrayList<>();
         for (Apple apple : inventory) {
-            if ((flag && apple.getColor().equals(color)) ||
-                    (!flag && apple.getWeight() > weight)) {
+            if (predicate.test(apple)) {
                 result.add(apple);
             }
         }
@@ -66,9 +65,11 @@ public class App {
 //        List<Apple> appleWeight = filterApplesByWeight(inventory, 110);
 //        System.out.println(appleWeight);
 
-        List<Apple> greenApples = filterApples(inventory, GREEN, 0, true);
-        List<Apple> heavyApples = filterApples(inventory, RED, 130, false);
+        List<Apple> greenApples = filterApples(inventory, new AppleGreenColorPredicate());
+        List<Apple> heavyApples = filterApples(inventory, new AppleHeavyWeightPredicate());
         System.out.println(greenApples);
         System.out.println(heavyApples);
+
+
     }
 }
