@@ -28,6 +28,17 @@ public class App {
         return result;
     }
 
+    public static List<Apple> filterApples(List<Apple> inventory, Color color, int weight, boolean flag) {
+        List<Apple> result = new ArrayList<>();
+        for (Apple apple : inventory) {
+            if ((flag && apple.getColor().equals(color)) ||
+                    (!flag && apple.getWeight() > weight)) {
+                result.add(apple);
+            }
+        }
+        return result;
+    }
+
     public static List<Apple> filterApplesByWeight(List<Apple> inventory, int weight) {
         List<Apple> result = new ArrayList<>();
         for (Apple apple : inventory) {
@@ -52,7 +63,12 @@ public class App {
 //        System.out.println(greenApples);
 //        System.out.println(redApples);
 
-        List<Apple> appleWeight = filterApplesByWeight(inventory, 110);
-        System.out.println(appleWeight);
+//        List<Apple> appleWeight = filterApplesByWeight(inventory, 110);
+//        System.out.println(appleWeight);
+
+        List<Apple> greenApples = filterApples(inventory, GREEN, 0, true);
+        List<Apple> heavyApples = filterApples(inventory, RED, 130, false);
+        System.out.println(greenApples);
+        System.out.println(heavyApples);
     }
 }
