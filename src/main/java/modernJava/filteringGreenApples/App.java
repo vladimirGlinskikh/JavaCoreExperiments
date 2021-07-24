@@ -1,8 +1,10 @@
 package modernJava.filteringGreenApples;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 
 import static modernJava.filteringGreenApples.Color.GREEN;
 import static modernJava.filteringGreenApples.Color.RED;
@@ -55,12 +57,35 @@ public class App {
         }
     }
 
+    public static <T> List<T> filter(List<T> list, Predicate<T> predicate) {
+        List<T> result = new ArrayList<>();
+        for (T t : list) {
+            if (predicate.test(t)) {
+                result.add(t);
+            }
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         List<Apple> inventory = Arrays.asList(
                 new Apple(80, Color.GREEN),
                 new Apple(155, Color.GREEN),
                 new Apple(120, Color.RED),
                 new Apple(160, Color.RED));
+        List<Integer> numbers = Arrays.asList(
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
+        );
+
+        List<String> list = Arrays.asList(
+                "One",
+                "Two",
+                "Three",
+                "Four",
+                "Five",
+                "Six",
+                "Seven"
+        );
 
 //        List<Apple> greenApples = filterGreenApples(inventory);
 //        System.out.println(greenApples);
@@ -84,7 +109,16 @@ public class App {
 //        prettyPrintApple(inventory, new AppleFancyFormatter());
 //        prettyPrintApple(inventory, new AppleSimpleFormatter());
 
-        List<Apple> result = filterApples(inventory, (Apple apple) -> RED.equals(apple.getColor()));
-        System.out.println(result);
+//        List<Apple> result = filterApples(inventory, (Apple apple) -> RED.equals(apple.getColor()));
+//        System.out.println(result);
+
+        List<Apple> redApples = filter(inventory, (Apple apple) -> RED.equals(apple.getColor()));
+        System.out.println(redApples);
+
+        List<Integer> evenNumbers = filter(numbers, (Integer i) -> i % 2 == 0);
+        System.out.println(evenNumbers);
+
+        List<String> evenList = filter(list, (String s) -> s.charAt(0) == 'S');
+        System.out.println(evenList);
     }
 }
