@@ -52,7 +52,8 @@ public class App {
         List<Apple> inventory = Arrays.asList(
                 new Apple(80, Color.GREEN),
                 new Apple(155, Color.GREEN),
-                new Apple(120, Color.RED));
+                new Apple(120, Color.RED),
+                new Apple(160, Color.RED));
 
 //        List<Apple> greenApples = filterGreenApples(inventory);
 //        System.out.println(greenApples);
@@ -65,11 +66,12 @@ public class App {
 //        List<Apple> appleWeight = filterApplesByWeight(inventory, 110);
 //        System.out.println(appleWeight);
 
-        List<Apple> greenApples = filterApples(inventory, new AppleGreenColorPredicate());
-        List<Apple> heavyApples = filterApples(inventory, new AppleHeavyWeightPredicate());
-        System.out.println(greenApples);
-        System.out.println(heavyApples);
+//        List<Apple> greenApples = filterApples(inventory, new AppleGreenColorPredicate());
+//        List<Apple> heavyApples = filterApples(inventory, new AppleHeavyWeightPredicate());
+//        System.out.println(greenApples);
+//        System.out.println(heavyApples);
 
-
+        List<Apple> redAndHeavyApples = filterApples(inventory, new AppleRedAndHeavyPredicate());
+        System.out.println(redAndHeavyApples);
     }
 }
