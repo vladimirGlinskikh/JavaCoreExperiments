@@ -48,6 +48,13 @@ public class App {
         return result;
     }
 
+    public static void prettyPrintApple(List<Apple> inventory, AppleFormatter formatter) {
+        for (Apple apple : inventory) {
+            String output = formatter.accept(apple);
+            System.out.println(output);
+        }
+    }
+
     public static void main(String[] args) {
         List<Apple> inventory = Arrays.asList(
                 new Apple(80, Color.GREEN),
@@ -71,7 +78,10 @@ public class App {
 //        System.out.println(greenApples);
 //        System.out.println(heavyApples);
 
-        List<Apple> redAndHeavyApples = filterApples(inventory, new AppleRedAndHeavyPredicate());
-        System.out.println(redAndHeavyApples);
+//        List<Apple> redAndHeavyApples = filterApples(inventory, new AppleRedAndHeavyPredicate());
+//        System.out.println(redAndHeavyApples);
+
+//        prettyPrintApple(inventory, new AppleFancyFormatter());
+        prettyPrintApple(inventory, new AppleSimpleFormatter());
     }
 }
