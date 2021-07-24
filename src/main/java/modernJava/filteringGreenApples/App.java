@@ -82,6 +82,9 @@ public class App {
 //        System.out.println(redAndHeavyApples);
 
 //        prettyPrintApple(inventory, new AppleFancyFormatter());
-        prettyPrintApple(inventory, new AppleSimpleFormatter());
+//        prettyPrintApple(inventory, new AppleSimpleFormatter());
+
+        List<Apple> result = filterApples(inventory, (Apple apple) -> RED.equals(apple.getColor()));
+        System.out.println(result);
     }
 }
