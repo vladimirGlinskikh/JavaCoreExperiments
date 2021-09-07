@@ -1,8 +1,8 @@
-package designPatterns.creational.factory;
+package designPatterns.creational.factory.computerCase;
 
-import designPatterns.creational.factory.factory.ComputerFactory;
-import designPatterns.creational.factory.factory.ComputerType;
-import designPatterns.creational.factory.model.Computer;
+import designPatterns.creational.factory.computerCase.factory.ComputerFactory;
+import designPatterns.creational.factory.computerCase.factory.ComputerType;
+import designPatterns.creational.factory.computerCase.model.Computer;
 
 public class StartFactory {
     public static void main(String[] args) {

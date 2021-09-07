@@ -1,4 +1,4 @@
-package designPatterns.creational.factory.model;
+package designPatterns.creational.factory.computerCase.model;
 
 public interface Computer {
     String getName();

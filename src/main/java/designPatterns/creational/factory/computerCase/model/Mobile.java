@@ -1,12 +1,12 @@
-package designPatterns.creational.factory.model;
+package designPatterns.creational.factory.computerCase.model;
 
-public class Tablet implements Computer {
+public class Mobile implements Computer {
     private String name;
     private String ram;
     private String ssd;
     private String cpu;
 
-    public Tablet(String name, String ram, String ssd, String cpu) {
+    public Mobile(String name, String ram, String ssd, String cpu) {
         this.name = name;
         this.ram = ram;
         this.ssd = ssd;
@@ -35,7 +35,7 @@ public class Tablet implements Computer {
 
     @Override
     public String toString() {
-        return "Tablet{" +
+        return "Mobile{" +
                 "name='" + name + '\'' +
                 ", ram='" + ram + '\'' +
                 ", ssd='" + ssd + '\'' +

@@ -1,6 +1,6 @@
-package designPatterns.creational.factory.factory;
+package designPatterns.creational.factory.computerCase.factory;
 
-import designPatterns.creational.factory.model.*;
+import designPatterns.creational.factory.computerCase.model.*;
 
 public class ComputerFactory {
 
