@@ -2,7 +2,7 @@ package functionalJava.imperative;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 
 import static functionalJava.imperative.Main.Gender.*;
 
@@ -33,8 +33,9 @@ public class Main {
 
         // Declarative approach
         System.out.println("Declarative approach");
+        Predicate<Person> personPredicate = person -> FEMALE.equals(person.gender);
         people.stream()
-                .filter(person -> FEMALE.equals(person.gender))
+                .filter(personPredicate)
                 .forEach(System.out::println);
     }
 
