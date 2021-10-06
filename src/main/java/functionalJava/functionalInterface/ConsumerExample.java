@@ -1,5 +1,6 @@
 package functionalJava.functionalInterface;
 
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 public class ConsumerExample {
@@ -8,12 +9,18 @@ public class ConsumerExample {
                     + ", thanks for registering phone number "
                     + customer.customerPhoneNumber);
 
+    static BiConsumer<Customer, Boolean> greetCustomerConsumerV2 = (customer, showPhoneNumber) ->
+            System.out.println("Hello " + customer.customerName
+                    + ", thanks for registering phone number "
+                    + (showPhoneNumber ? customer.customerPhoneNumber : "*********"));
+
     public static void main(String[] args) {
         Customer vladimir = new Customer("Vladimir", "+777788789");
         greetCustomer(vladimir);
 
         //Consumer functional interface
         greetCustomerConsumer.accept(vladimir);
+        greetCustomerConsumerV2.accept(vladimir, false);
     }
 
     static void greetCustomer(Customer customer) {
