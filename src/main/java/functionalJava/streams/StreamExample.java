@@ -1,6 +1,7 @@
 package functionalJava.streams;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import static functionalJava.streams.StreamExample.Gender.FEMALE;
 import static functionalJava.streams.StreamExample.Gender.MALE;
@@ -15,10 +16,15 @@ public class StreamExample {
                 new Person("Nikolay", MALE)
         );
 
-        people.stream()
-                .map(person -> person.name)
-                .mapToInt(String::length)
-                .forEach(System.out::println);
+//        people.stream()
+//                .map(person -> person.name)
+//                .mapToInt(String::length)
+//                .forEach(System.out::println);
+
+        final Predicate<Person> personPredicate = person -> FEMALE.equals(person.gender);
+        boolean containsOnlyFemales = people.stream()
+                .anyMatch(personPredicate);
+        System.out.println(containsOnlyFemales);
     }
 
     enum Gender {
