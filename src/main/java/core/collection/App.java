@@ -10,9 +10,17 @@ public class App {
         System.out.println(rangeSet(10, 20));
 //        System.out.println(rangeSet(0, Integer.MAX_VALUE).contains(-1));
         System.out.println("________________________");
+
         System.out.println(rangeList(10, 20).contains(11));
         System.out.println(rangeList(10, 20).contains(9));
         System.out.println(rangeList(10, 20));
+        System.out.println("___________________________");
+
+        Map map = new HashMap();
+        map.put("one", 1);
+        map.put("two", 2);
+        map.put("three", 3);
+        iterateOverMap(map);
     }
 
     static <T> Iterable<T> nCopies(T value, int count) {
@@ -79,5 +87,17 @@ public class App {
                 return toExclusive - fromInclusive;
             }
         };
+    }
+
+//    static void iterateOverMap(Map<String, Integer> map) {
+//        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+//            String key = entry.getKey();
+//            Integer value = entry.getValue();
+//            System.out.println(key + " -> " + value);
+//        }
+//    }
+
+    static void iterateOverMap(Map<String, Integer> map) {
+        map.forEach((key, value) -> System.out.println(key + " -> " + value));
     }
 }
