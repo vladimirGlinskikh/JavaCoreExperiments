@@ -1,9 +1,6 @@
 package core.collection;
 
-import java.util.AbstractSet;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.Set;
+import java.util.*;
 
 public class App {
     public static void main(String[] args) {
@@ -11,7 +8,11 @@ public class App {
         System.out.println(rangeSet(10, 20).contains(10));
         System.out.println(rangeSet(10, 20).contains(20));
         System.out.println(rangeSet(10, 20));
-        System.out.println(rangeSet(0, Integer.MAX_VALUE).contains(-1));
+//        System.out.println(rangeSet(0, Integer.MAX_VALUE).contains(-1));
+        System.out.println("________________________");
+        System.out.println(rangeList(10, 20).contains(11));
+        System.out.println(rangeList(10, 20).contains(9));
+        System.out.println(rangeList(10, 20));
     }
 
     static <T> Iterable<T> nCopies(T value, int count) {
@@ -55,6 +56,22 @@ public class App {
                         return next++;
                     }
                 };
+            }
+
+            @Override
+            public int size() {
+                return toExclusive - fromInclusive;
+            }
+        };
+    }
+
+    static List<Integer> rangeList(int fromInclusive, int toExclusive) {
+        return new AbstractList<Integer>() {
+            @Override
+            public Integer get(int index) {
+                if (index < 0 || index >= size())
+                    throw new IndexOutOfBoundsException(index);
+                return fromInclusive + index;
             }
 
             @Override
