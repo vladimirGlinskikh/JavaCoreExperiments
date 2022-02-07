@@ -1,4 +1,4 @@
-package core.generics;
+package core.generics.introduction;
 
 import java.util.NoSuchElementException;
 
