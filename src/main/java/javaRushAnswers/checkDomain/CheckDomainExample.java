@@ -5,15 +5,21 @@ public class CheckDomainExample {
         System.out.println(checkDomain("zhelezyaka.com"));
     }
 
+//    public static String checkDomain(String url) {
+//        if (url.endsWith("com")) {
+//            return "com";
+//        } else if (url.endsWith(".net")) {
+//            return "net";
+//        } else if (url.endsWith(".org")) {
+//            return "org";
+//        } else if (url.endsWith(".ru")) {
+//            return "ru";
+//        } else return "неизвестный";
+//    }
+
+
     public static String checkDomain(String url) {
-        if (url.endsWith("com")) {
-            return "com";
-        } else if (url.endsWith(".net")) {
-            return "net";
-        } else if (url.endsWith(".org")) {
-            return "org";
-        } else if (url.endsWith(".ru")) {
-            return "ru";
-        } else return "неизвестный";
+        String[] domain = url.split(".");
+        return domain[domain.length - 1];
     }
 }
