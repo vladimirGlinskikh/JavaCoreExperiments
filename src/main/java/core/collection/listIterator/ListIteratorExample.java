@@ -6,7 +6,7 @@ import java.util.ListIterator;
 
 public class ListIteratorExample {
     public static void main(String[] args) {
-        String s = "World";
+        String s = "World"; 
         List<Character> list = new ArrayList<>();
         for (char ch : s.toCharArray()) {
             list.add(ch);
