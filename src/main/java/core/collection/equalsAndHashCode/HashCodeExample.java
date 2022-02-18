@@ -24,6 +24,10 @@ public class HashCodeExample {
         System.out.println(student1.hashCode());
         System.out.println(student2.hashCode());
         System.out.println(student4.hashCode());
+
+        for (Map.Entry<Student, Double> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + ":" + entry.getValue());
+        }
     }
 }
 
