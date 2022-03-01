@@ -1,4 +1,4 @@
-package core.collection.map;
+package core.collection.map.hashMap;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,5 +27,8 @@ public class HashMapExample {
         System.out.println("------------------");
         System.out.println(map.values());
         System.out.println("------------------");
+
+        Map<Integer, String> map1 = new HashMap<>(16, 0.75f);
+
     }
 }
