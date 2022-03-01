@@ -15,13 +15,12 @@ public class Student {
 
     @Override
     public String toString() {
-        return "\n" + "Student{" +
+        return "Student{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", course=" + course +
-                '}';
+                '}' + "\n";
     }
-
 
 
     @Override
