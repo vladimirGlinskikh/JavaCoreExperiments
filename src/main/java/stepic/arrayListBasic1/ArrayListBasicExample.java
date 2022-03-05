@@ -1,4 +1,4 @@
-package stepic.arrayListBasic;
+package stepic.arrayListBasic1;
 
 import java.util.ArrayList;
 import java.util.Arrays;
