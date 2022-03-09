@@ -24,6 +24,5 @@ public class IteratorExample {
                 System.out.println(temp);
             }
         }
-        return;
     }
 }
