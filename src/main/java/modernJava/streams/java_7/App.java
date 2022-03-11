@@ -3,6 +3,7 @@ package modernJava.streams.java_7;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static java.util.Comparator.comparing;
@@ -16,6 +17,15 @@ public class App {
 
         getLowCaloricDishesNameInJava8()
                 .forEach(System.out::println);
+
+        System.out.println("-----------------------------");
+
+        System.out.println(getDishesByType());
+    }
+
+    private static Map<Dishes.Type, List<Dishes>> getDishesByType() {
+        return Dishes.menu.stream()
+                .collect(Collectors.groupingBy(Dishes::getType));
     }
 
     private static List<String> getLowCaloricDishesNameInJava8() {
