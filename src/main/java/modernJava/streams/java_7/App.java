@@ -21,6 +21,19 @@ public class App {
         System.out.println("-----------------------------");
 
         System.out.println(getDishesByType());
+
+        System.out.println("-----------------------------");
+
+        getThreeHighCaloricDishNames()
+                .forEach(System.out::println);
+    }
+
+    private static List<String> getThreeHighCaloricDishNames() {
+        return Dishes.menu.stream()
+                .filter(dishes -> dishes.getCalories() > 300)
+                .map(Dishes::getName)
+                .limit(3)
+                .collect(Collectors.toList());
     }
 
     private static Map<Dishes.Type, List<Dishes>> getDishesByType() {
