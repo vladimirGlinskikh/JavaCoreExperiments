@@ -26,6 +26,17 @@ public class App {
 
         getThreeHighCaloricDishNames()
                 .forEach(System.out::println);
+
+        System.out.println("-----------------------------");
+
+        getSliceMenu()
+                .forEach(System.out::println);
+    }
+
+    private static List<Dishes> getSliceMenu() {
+        return Dishes.menu.stream()
+                .dropWhile(dishes -> dishes.getCalories() < 400)
+                .collect(Collectors.toList());
     }
 
     private static List<String> getThreeHighCaloricDishNames() {
