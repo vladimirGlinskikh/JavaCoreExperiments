@@ -31,6 +31,18 @@ public class App {
 
         getSliceMenu()
                 .forEach(System.out::println);
+
+        System.out.println("-----------------------------");
+
+        getSkipThreeHighCaloricDishNames()
+                .forEach(System.out::println);
+    }
+
+    private static List<Dishes> getSkipThreeHighCaloricDishNames() {
+        return Dishes.menu.stream()
+                .filter(dishes1 -> dishes1.getCalories() > 300)
+                .skip(3)
+                .collect(Collectors.toList());
     }
 
     private static List<Dishes> getSliceMenu() {
