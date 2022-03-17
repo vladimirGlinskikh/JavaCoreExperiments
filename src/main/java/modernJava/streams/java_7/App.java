@@ -36,6 +36,16 @@ public class App {
 
         getSkipThreeHighCaloricDishNames()
                 .forEach(System.out::println);
+
+        System.out.println("-----------------------------");
+
+        isVegetarianChecking();
+    }
+
+    private static void isVegetarianChecking() {
+        if (Dishes.menu.stream().anyMatch(Dishes::isVegetarian)) {
+            System.out.println("The menu is (somewhat) vegetarian friendly!");
+        }
     }
 
     private static List<Dishes> getSkipThreeHighCaloricDishNames() {
