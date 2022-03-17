@@ -32,5 +32,13 @@ public class CollapseOfDataStreamsExample {
                         .filter(n -> n % 3 == 0)
                         .findFirst();
         System.out.println(firstSquareDivisibleByThree);
+        System.out.println("---------------------------------");
+
+        Optional<Integer> sum = numbers.stream()
+                .reduce(Integer::sum);
+        System.out.println(sum);
+        System.out.println("---------------------------------");
+
+
     }
 }
