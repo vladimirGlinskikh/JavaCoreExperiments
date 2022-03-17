@@ -40,10 +40,30 @@ public class App {
         System.out.println("-----------------------------");
 
         isVegetarianChecking();
+
+        System.out.println("-----------------------------");
+
+        whetherMenusGoodForYourHealth();
+
+        System.out.println("-----------------------------");
+
+
+    }
+
+    private static void whetherMenusGoodForYourHealth() {
+        if (Dishes.menu.stream()
+//                .allMatch(dishes -> dishes.getCalories() < 1_000))
+                .noneMatch(dishes -> dishes.getCalories() <= 700))
+        {
+            System.out.println("The menu is good for your health");
+        } else {
+            System.out.println("The menu is not good for your health");
+        }
     }
 
     private static void isVegetarianChecking() {
-        if (Dishes.menu.stream().anyMatch(Dishes::isVegetarian)) {
+        if (Dishes.menu.stream()
+                .anyMatch(Dishes::isVegetarian)) {
             System.out.println("The menu is (somewhat) vegetarian friendly!");
         }
     }
