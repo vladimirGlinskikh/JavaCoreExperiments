@@ -2,6 +2,7 @@ package modernJava.streams.collapseOfDataStreams;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class CollapseOfDataStreamsExample {
@@ -23,5 +24,13 @@ public class CollapseOfDataStreamsExample {
                 .map(n -> n * n)
                 .collect(Collectors.toList())
                 .forEach(System.out::println);
+        System.out.println("---------------------------------");
+
+        Optional<Integer> firstSquareDivisibleByThree =
+                numbers.stream()
+                        .map(n -> n * n)
+                        .filter(n -> n % 3 == 0)
+                        .findFirst();
+        System.out.println(firstSquareDivisibleByThree);
     }
 }
