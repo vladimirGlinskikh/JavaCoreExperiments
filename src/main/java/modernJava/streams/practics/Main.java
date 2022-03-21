@@ -1,9 +1,12 @@
 package modernJava.streams.practics;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
+
+import static java.util.Comparator.*;
+import static java.util.stream.Collectors.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,22 +24,36 @@ public class Main {
 
         findAllTransactionsFor2011YearAndSortedThemByAmountFromSmallToLarge(transactions)
                 .forEach(System.out::println);
+        System.out.println("------------------------------------");
 
         listOfNonRepeatableCitiesWhereTradersWork(transactions)
                 .forEach(System.out::println);
+        System.out.println("------------------------------------");
+
+        findAllTradersFromCambridgeAndSortedThem(transactions)
+                .forEach(System.out::println);
+    }
+
+    private static List<Trader> findAllTradersFromCambridgeAndSortedThem(List<Transactional> transactions) {
+        return transactions.stream()
+                .map(Transactional::getTrader)
+                .filter(transactional -> transactional.getCity().equals("Cambridge"))
+                .distinct()
+                .sorted(comparing(Trader::getName))
+                .collect(toList());
     }
 
     private static List<String> listOfNonRepeatableCitiesWhereTradersWork(List<Transactional> transactions) {
         return transactions.stream()
                 .map(transactional -> transactional.getTrader().getCity())
                 .distinct()
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     private static List<Transactional> findAllTransactionsFor2011YearAndSortedThemByAmountFromSmallToLarge(List<Transactional> transaction) {
         return transaction.stream()
                 .filter(transactional -> transactional.getYear() == 2011)
-                .sorted(Comparator.comparing(Transactional::getValue))
-                .collect(Collectors.toList());
+                .sorted(comparing(Transactional::getValue))
+                .collect(toList());
     }
 }
