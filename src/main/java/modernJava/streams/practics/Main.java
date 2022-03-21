@@ -21,6 +21,16 @@ public class Main {
 
         findAllTransactionsFor2011YearAndSortedThemByAmountFromSmallToLarge(transactions)
                 .forEach(System.out::println);
+
+        listOfNonRepeatableCitiesWhereTradersWork(transactions)
+                .forEach(System.out::println);
+    }
+
+    private static List<String> listOfNonRepeatableCitiesWhereTradersWork(List<Transactional> transactions) {
+        return transactions.stream()
+                .map(transactional -> transactional.getTrader().getCity())
+                .distinct()
+                .collect(Collectors.toList());
     }
 
     private static List<Transactional> findAllTransactionsFor2011YearAndSortedThemByAmountFromSmallToLarge(List<Transactional> transaction) {
