@@ -39,6 +39,18 @@ public class Main {
 
         isThereEvenOneTraderFromMilan(transactions);
         System.out.println("------------------------------------");
+
+        outputAmountsOfAllTransactionsOfTradersFromCambridge(transactions)
+                .forEach(System.out::println);
+        System.out.println("------------------------------------");
+
+    }
+
+    private static List<Integer> outputAmountsOfAllTransactionsOfTradersFromCambridge(List<Transactional> transactions) {
+        return transactions.stream()
+                .filter(transactional -> transactional.getTrader().getCity().equals("Cambridge"))
+                .map(Transactional::getValue)
+                .collect(toList());
     }
 
     private static void isThereEvenOneTraderFromMilan(List<Transactional> transactions) {
