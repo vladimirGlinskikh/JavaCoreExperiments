@@ -10,6 +10,7 @@ public class Main {
     public static void main(String[] args) {
         Trader raoul = new Trader("Raoul", "Cambridge");
         Trader mario = new Trader("Mario", "Milan");
+        Trader vladimir = new Trader("Vladimir", "Milan");
         Trader alan = new Trader("Alan", "Cambridge");
         Trader brian = new Trader("Brian", "Cambridge");
         List<Transactional> transactions = Arrays.asList(
@@ -18,7 +19,8 @@ public class Main {
                 new Transactional(raoul, 2011, 400),
                 new Transactional(mario, 2012, 710),
                 new Transactional(mario, 2012, 700),
-                new Transactional(alan, 2012, 950));
+                new Transactional(alan, 2012, 950),
+                new Transactional(vladimir, 2011, 1_100));
 
         findAllTransactionsFor2011YearAndSortedThemByAmountFromSmallToLarge(transactions)
                 .forEach(System.out::println);
@@ -35,7 +37,17 @@ public class Main {
         System.out.println(returnedAStringWithAllTradersNamesSortedAlphabetically(transactions));
         System.out.println("------------------------------------");
 
+        isThereEvenOneTraderFromMilan(transactions);
+        System.out.println("------------------------------------");
+    }
 
+    private static void isThereEvenOneTraderFromMilan(List<Transactional> transactions) {
+        transactions.stream()
+                .filter(transactional -> transactional.getTrader().getCity().equals("Milan"))
+                .findAny()
+                .ifPresent(transactional -> System.out.println(transactional.getTrader().getName()));
+
+//                .anyMatch(transactional -> transactional.getTrader().getCity().equals("Milan"));
     }
 
     private static String returnedAStringWithAllTradersNamesSortedAlphabetically(List<Transactional> transactions) {
