@@ -50,7 +50,13 @@ public class Main {
         maxAmountAmongAllTransactions(transactions);
         System.out.println("------------------------------------");
 
+        minAmountAmongAllTransactions(transactions);
+    }
 
+    private static void minAmountAmongAllTransactions(List<Transactional> transactions) {
+        transactions.stream()
+                .min(comparing(Transactional::getValue))
+                .ifPresent(transactional -> System.out.println(transactional.getValue()));
     }
 
     private static void maxAmountAmongAllTransactions(List<Transactional> transactions) {
