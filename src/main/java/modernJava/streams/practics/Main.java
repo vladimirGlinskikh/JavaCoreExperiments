@@ -2,6 +2,9 @@ package modernJava.streams.practics;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static java.util.Comparator.*;
 import static java.util.stream.Collectors.*;
@@ -44,6 +47,16 @@ public class Main {
                 .forEach(System.out::println);
         System.out.println("------------------------------------");
 
+        maxAmountAmongAllTransactions(transactions);
+        System.out.println("------------------------------------");
+
+
+    }
+
+    private static void maxAmountAmongAllTransactions(List<Transactional> transactions) {
+        transactions.stream()
+                .max(comparing(Transactional::getValue))
+                .ifPresent(transactional -> System.out.println(transactional.getValue()));
     }
 
     private static List<Integer> outputAmountsOfAllTransactionsOfTradersFromCambridge(List<Transactional> transactions) {
