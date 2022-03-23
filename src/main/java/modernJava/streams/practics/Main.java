@@ -2,8 +2,6 @@ package modernJava.streams.practics;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 import static java.util.Comparator.*;
 import static java.util.stream.Collectors.*;
@@ -32,6 +30,20 @@ public class Main {
 
         findAllTradersFromCambridgeAndSortedThem(transactions)
                 .forEach(System.out::println);
+        System.out.println("------------------------------------");
+
+        System.out.println(returnedAStringWithAllTradersNamesSortedAlphabetically(transactions));
+        System.out.println("------------------------------------");
+
+
+    }
+
+    private static String returnedAStringWithAllTradersNamesSortedAlphabetically(List<Transactional> transactions) {
+        return transactions.stream()
+                .map(transactional -> transactional.getTrader().getName())
+                .distinct()
+                .sorted()
+                .collect(joining(" "));
     }
 
     private static List<Trader> findAllTradersFromCambridgeAndSortedThem(List<Transactional> transactions) {
