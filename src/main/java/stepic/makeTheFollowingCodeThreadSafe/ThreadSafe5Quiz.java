@@ -3,8 +3,9 @@ package stepic.makeTheFollowingCodeThreadSafe;
 import java.util.Random;
 import java.util.concurrent.*;
 import java.util.concurrent.locks.Lock;
-import java.util.function.Consumer;
+import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.function.Consumer;
 
 public class ThreadSafe5Quiz {
     private static final int POOL_SIZE = 50;
@@ -43,7 +44,7 @@ public class ThreadSafe5Quiz {
 
     public static class ThreadSafe5 {
         // Tip: always prefer "weakened" type for the declaration, i.e. List instead of ArrayList, as an example.
-        private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+        private final ReadWriteLock lock = new ReentrantReadWriteLock();
         private final Lock r = lock.readLock();
         private final Lock w = lock.writeLock();
         private int balance;
@@ -53,33 +54,33 @@ public class ThreadSafe5Quiz {
         }
 
         public void withdraw(final int amount) {
-            r.lock();
+            w.lock();
             try {
                 System.out.printf("Withdraw %d%n", amount);
                 if (balance >= amount) {
                     balance -= amount;
                 }
             } finally {
-                r.unlock();
+                w.unlock();
             }
         }
 
         public void deposit(final int amount) {
-            r.lock();
+            w.lock();
             try {
                 System.out.printf("Deposit %d%n", amount);
                 balance += amount;
             } finally {
-                r.unlock();
+                w.unlock();
             }
         }
 
         public int getBalance() {
-            w.lock();
+            r.lock();
             try {
                 return balance;
             } finally {
-                w.unlock();
+                r.unlock();
             }
         }
     }
