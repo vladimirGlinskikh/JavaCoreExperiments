@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CountingDuplicates {
+    public static void main(String[] args) {
+        System.out.println(CountingDuplicates.duplicateCount("1, 1, 1, 2, 5, 1"));
+    }
     public static int duplicateCount(String text) {
         Map<String, Integer> map = new HashMap<>();
         int count = 0;
