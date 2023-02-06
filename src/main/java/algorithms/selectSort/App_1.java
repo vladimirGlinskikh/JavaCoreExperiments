@@ -1,4 +1,4 @@
-package algorithms.bubbleSort;
+package algorithms.selectSort;
 
 public class App_1 {
     static char[] arrayChar = {'b', ';', '.', 'e', 'o', 'g', ',', 'a', ':'};
