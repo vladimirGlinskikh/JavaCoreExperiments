@@ -1,0 +1,12 @@
+<yml_access site="https://yndx-test.ru/aci89e7kdo1g6q2v/">
+    <keys>
+        <key id="1">
+            <latitude>45.116160</latitude>
+            <longitude>39.030994</longitude>
+        </key>
+
+        <key id="2">
+            <number>Duzentos e vinte e cinco</number>
+        </key>
+    </keys>
+</yml_access>
